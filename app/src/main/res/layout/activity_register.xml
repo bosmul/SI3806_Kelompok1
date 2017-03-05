@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorPrimaryDark"
     tools:context="com.rpl.kelompok1.gelo.RegisterActivity">
 
     <TextView
@@ -82,6 +82,7 @@
         android:orientation="vertical">
         <Button
             android:id="@+id/btnReg"
+            style="@style/btnStyleOrange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sign Up"
