@@ -4,24 +4,22 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
-public class LoginActivity extends AppCompatActivity  {
-
+public class LoginJasaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_jasa);
     }
 
     public void register(View view){
-        Intent toReg = new Intent(LoginActivity.this, RegisterActivity.class);
+        Intent toReg = new Intent(LoginJasaActivity.this, RegistrasiJasaActivity.class);
         startActivity(toReg);
     }
     public void login(View view){
-        Intent toReg = new Intent(LoginActivity.this, MenuCustomerActivity.class);
+        Intent toReg = new Intent(LoginJasaActivity.this, MenuJasaActivity.class);
         startActivity(toReg);
-}
+    }
+
 }
