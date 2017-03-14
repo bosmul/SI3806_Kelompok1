@@ -27,7 +27,7 @@ public class MenuJasaActivity extends AppCompatActivity implements View.OnClickL
 
         }
         if (view == btnPeta) {
-            startActivity(new Intent(MenuJasaActivity.this, PetaActivity.class));
+            startActivity(new Intent(MenuJasaActivity.this, MapsActivity.class));
 
         }
         if (view == btnPesananCustomer) {

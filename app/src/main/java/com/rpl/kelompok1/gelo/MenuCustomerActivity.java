@@ -28,7 +28,7 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
 
         }
         if (view == btnPeta) {
-            startActivity(new Intent(MenuCustomerActivity.this, PetaActivity.class));
+            startActivity(new Intent(MenuCustomerActivity.this, MapsActivity.class));
 
         }
         if (view == btnInformasiTempatLaundry) {
