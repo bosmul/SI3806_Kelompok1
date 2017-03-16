@@ -64,7 +64,7 @@
         android:layout_marginBottom="36dp" />
 
     <Button
-        android:id="@+id/btnmaps"
+        android:id="@+id/btnPeta"
         style="@style/btnStyleOrange"
         android:layout_width="333dp"
         android:layout_height="59dp"
