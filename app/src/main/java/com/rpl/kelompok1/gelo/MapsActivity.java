@@ -2,6 +2,8 @@ package com.rpl.kelompok1.gelo;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -10,6 +12,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -25,8 +30,13 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
+    Button mSearch;
+    EditText mAddress;
     private GoogleMap mMap;
     private final static int MY_PERMISSION_FINE_LOCATION = 101;
     private GoogleApiClient mGoogleApiClient;
@@ -34,6 +44,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Double latitude = null;
     private Double longitude = null;
     private static final String TAG = "GELO";
+
+    private void requestLocationUpdates() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+        }
+    }
 
     @Override
     public void onStart() {
@@ -76,6 +92,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+        mSearch = (Button) findViewById(R.id.searchButton);
+        mAddress = (EditText) findViewById(R.id.addressBar);
+
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String alamat = mAddress.getText().toString();
+                if (alamat != null && !alamat.equals("")) {
+                    List<Address> addressList = null;
+                    Geocoder coder = new Geocoder(MapsActivity.this);
+                    try {
+                        addressList = coder.getFromLocationName(alamat, 1);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Address getAlamat = addressList.get(0);
+                    LatLng latlng = new LatLng(getAlamat.getLatitude(), getAlamat.getLongitude());
+                    mMap.addMarker(new MarkerOptions().position(latlng));
+                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latlng));
+                }
+            }
+        });
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
@@ -132,12 +172,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         requestLocationUpdates();
-    }
-
-    private void requestLocationUpdates() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
-        }
     }
 
     @Override
