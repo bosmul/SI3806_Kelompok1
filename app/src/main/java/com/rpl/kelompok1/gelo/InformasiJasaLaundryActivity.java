@@ -9,5 +9,6 @@ public class InformasiJasaLaundryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_informasi_jasa_laundry);
+
     }
 }

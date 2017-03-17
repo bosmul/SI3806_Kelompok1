@@ -11,6 +11,7 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
     private Button btnPeta;
     private Button btnInformasiTempatLaundry;
     private Button btnPesanKeluhan;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,8 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
         btnPesanKeluhan = (Button) findViewById(R.id.btnPesanKeluhan);
 
     }
+
+
 
     public void onClick(View view) {
         if (view == btnPromo) {
@@ -39,5 +42,8 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
             startActivity(new Intent(MenuCustomerActivity.this, PesanKeluhanActivity.class));
 
         }
+
+
+
 
     }}
