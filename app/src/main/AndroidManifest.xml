@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.rpl.kelompok1.gelo">
+    package="com.rpl.kelompok1.gelo">
 
     <uses-feature
         android:glEsVersion="0x00020000"
-        android:required="true"/>
+        android:required="true" />
 
     <meta-data
         android:name="com.google.android.gms.version"
         android:value="@integer/google_play_services_version" />
 
-
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -22,40 +21,30 @@
         android:theme="@style/AppTheme">
         <activity android:name=".StartActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StatusActivity">
-        </activity>
-        <activity android:name=".InformasiJasaLaundryActivity">
-        </activity>
-        <activity android:name=".LoginJasaActivity">
-        </activity>
-        <activity android:name=".MenuCustomerActivity">
-        </activity>
-        <activity android:name=".MenuJasaActivity">
-        </activity>
-        <activity android:name=".PesanKeluhanActivity">
-        </activity>
-        <activity android:name=".PromoActivity">
-        </activity>
-        <activity android:name=".RegistrasiJasaActivity">
-        </activity>
-
-        <activity android:name=".LoginActivity">
-        </activity>
-        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".StatusActivity" />
+        <activity android:name=".InformasiJasaLaundryActivity" />
+        <activity android:name=".MenuCustomerActivity" />
+        <activity android:name=".MenuJasaActivity" />
+        <activity android:name=".PesanKeluhanActivity" />
+        <activity android:name=".PromoActivity" />
+        <activity android:name=".RegistrasiJasaActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps">
-
-        </activity>
+            android:label="@string/title_activity_maps" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key"/>
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".MenuAdminActivity" />
+        <activity android:name=".LaporanActivity"></activity>
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@ public class StatusActivity extends AppCompatActivity implements OnClickListener
 
     private Button btnPemilikJasa;
     private Button btnCustomer;
+    private Button btnAdmin;
 
 
     @Override
@@ -22,15 +23,21 @@ public class StatusActivity extends AppCompatActivity implements OnClickListener
         btnPemilikJasa.setOnClickListener(this);
         btnCustomer = (Button) findViewById(R.id.btnCustomer);
         btnCustomer.setOnClickListener(this);
+        btnAdmin = (Button) findViewById(R.id.btnAdmin);
+        btnAdmin.setOnClickListener(this);
 
     }
     @Override
     public void onClick(View view) {
         if (view == btnPemilikJasa) {
-            startActivity(new Intent(StatusActivity.this, LoginJasaActivity.class));
+            startActivity(new Intent(StatusActivity.this, LoginActivity.class));
 
         }
         if (view == btnCustomer) {
+            startActivity(new Intent(StatusActivity.this, LoginActivity.class));
+
+        }
+        if (view == btnAdmin) {
             startActivity(new Intent(StatusActivity.this, LoginActivity.class));
 
         }
