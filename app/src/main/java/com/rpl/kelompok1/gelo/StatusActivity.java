@@ -29,16 +29,16 @@ public class StatusActivity extends AppCompatActivity implements OnClickListener
     }
     @Override
     public void onClick(View view) {
-        if (view == btnPemilikJasa) {
-            startActivity(new Intent(StatusActivity.this, LoginActivity.class));
-
-        }
         if (view == btnCustomer) {
             startActivity(new Intent(StatusActivity.this, LoginActivity.class));
 
         }
+        if (view == btnPemilikJasa) {
+            startActivity(new Intent(StatusActivity.this, LoginKhusus.class));
+
+        }
         if (view == btnAdmin) {
-            startActivity(new Intent(StatusActivity.this, LoginActivity.class));
+            startActivity(new Intent(StatusActivity.this, LoginKhusus.class));
 
         }
     }

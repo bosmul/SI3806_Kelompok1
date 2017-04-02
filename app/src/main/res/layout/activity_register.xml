@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="20dp"
-        android:text="GELO"
+        android:text="Registrasi Pengguna"
         android:textSize="30sp"
         android:textColor="@color/white"/>
 
