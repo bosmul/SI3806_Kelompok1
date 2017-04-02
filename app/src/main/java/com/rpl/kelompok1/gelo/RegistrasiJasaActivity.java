@@ -13,7 +13,7 @@ public class RegistrasiJasaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registrasi_jasa);}
 
     public void login(View view){
-        Intent toLogin = new Intent(RegistrasiJasaActivity.this, LoginJasaActivity.class);
+        Intent toLogin = new Intent(RegistrasiJasaActivity.this, LoginActivity.class);
         startActivity(toLogin);
     }
 }

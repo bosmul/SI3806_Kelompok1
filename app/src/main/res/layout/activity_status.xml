@@ -35,6 +35,7 @@
 
         android:onClick="custumer" />
 
+
     <Button
         android:id="@+id/btnPemilikJasa"
         style="@style/btnStyleOrange"
@@ -47,6 +48,17 @@
 
         android:onClick="pemilik jasa laundry" />
 
+    <Button
+        android:id="@+id/btnAdmin"
+        style="@style/btnStyleOrange"
+        android:layout_width="333dp"
+        android:layout_height="59dp"
+        android:text="ADMIN"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+
+        android:onClick="admin" />
 
 
 </LinearLayout>
