@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo.Activities;
+package com.rpl.kelompok1.gelo.activities;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -15,8 +15,9 @@ import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.helpers.InputValidation;
 
-public class LoginKhusus extends AppCompatActivity implements View.OnClickListener{
-    private final AppCompatActivity activity = LoginKhusus.this;
+
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener  {
+    private final AppCompatActivity activity = LoginActivity.this;
 
     private NestedScrollView nestedScrollView;
 
@@ -28,13 +29,15 @@ public class LoginKhusus extends AppCompatActivity implements View.OnClickListen
 
     private AppCompatButton appCompatButtonLogin;
 
+    private AppCompatTextView textViewLinkRegister;
+
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_khusus);
+        setContentView(R.layout.activity_login);
         getSupportActionBar().hide();
 
         initViews();
@@ -57,6 +60,8 @@ public class LoginKhusus extends AppCompatActivity implements View.OnClickListen
 
         appCompatButtonLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);
 
+        textViewLinkRegister = (AppCompatTextView) findViewById(R.id.textViewLinkRegister);
+
     }
 
     /**
@@ -64,6 +69,7 @@ public class LoginKhusus extends AppCompatActivity implements View.OnClickListen
      */
     private void initListeners() {
         appCompatButtonLogin.setOnClickListener(this);
+        textViewLinkRegister.setOnClickListener(this);
     }
 
     /**
@@ -86,6 +92,11 @@ public class LoginKhusus extends AppCompatActivity implements View.OnClickListen
             case R.id.appCompatButtonLogin:
                 verifyFromSQLite();
                 break;
+            case R.id.textViewLinkRegister:
+                // Navigate to RegisterActivity
+                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intentRegister);
+                break;
         }
     }
 
@@ -103,11 +114,11 @@ public class LoginKhusus extends AppCompatActivity implements View.OnClickListen
             return;
         }
 
-        if (databaseHelper.checkAdmin(textInputEditTextEmail.getText().toString().trim()
+        if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
 
-            Intent accountsIntent = new Intent(activity, UserListActivity.class);
+            Intent accountsIntent = new Intent(activity, MenuCustomerActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);

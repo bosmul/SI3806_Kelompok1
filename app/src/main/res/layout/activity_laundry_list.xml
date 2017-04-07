@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.rpl.kelompok1.gelo.activities.UserListActivity">
+    tools:context="com.rpl.kelompok1.gelo.activities.LaundryListActivity">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DAFTAR USER"
+            android:text="DAFTAR LAUNDRY"
             android:textSize="20sp" />
 
         <android.support.v7.widget.AppCompatTextView
@@ -44,7 +44,7 @@
         android:textColor="@android:color/black" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewUsers"
+        android:id="@+id/recyclerViewLaundry"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

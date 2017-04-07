@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo.Activities;
+package com.rpl.kelompok1.gelo.activities;
 
 
 import android.content.Intent;
@@ -37,11 +37,11 @@ public class StatusActivity extends AppCompatActivity implements OnClickListener
 
         }
         if (view == btnPemilikJasa) {
-            startActivity(new Intent(StatusActivity.this, LoginKhusus.class));
+            startActivity(new Intent(StatusActivity.this, LoginJasaActivity.class));
 
         }
         if (view == btnAdmin) {
-            startActivity(new Intent(StatusActivity.this, LoginKhusus.class));
+            startActivity(new Intent(StatusActivity.this, LoginKhususActivity.class));
 
         }
     }

@@ -19,33 +19,38 @@
         android:label="GELO"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.StartActivity">
+        <activity android:name=".activities.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.StatusActivity"/>
-        <activity android:name=".Activities.InformasiJasaLaundryActivity"/>
-        <activity android:name=".Activities.MenuCustomerActivity"/>
-        <activity android:name=".Activities.MenuJasaActivity"/>
-        <activity android:name=".Activities.PesanKeluhanActivity"/>
-        <activity android:name=".Activities.PromoActivity"/>
-        <activity android:name=".Activities.LoginActivity"/>
-        <activity android:name=".Activities.RegisterActivity"/>
+        <activity android:name=".activities.StatusActivity"/>
+        <activity android:name=".activities.MenuCustomerActivity"/>
+        <activity android:name=".activities.MenuJasaActivity"/>
+        <activity android:name=".activities.PesanKeluhanActivity"/>
+        <activity android:name=".activities.PromoActivity"/>
+        <activity android:name=".activities.LoginActivity"/>
+        <activity android:name=".activities.RegisterActivity"/>
         <activity
-            android:name=".Activities.MapsActivity"
+            android:name=".activities.MapsActivity"
             android:label="@string/title_activity_maps"/>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key"/>
 
-        <activity android:name=".Activities.MenuAdminActivity"/>
-        <activity android:name=".Activities.LaporanActivity"/>
-        <activity android:name=".Activities.LoginKhusus"/>
-        <activity android:name=".Activities.UserListActivity">
+        <activity android:name=".activities.MenuAdminActivity"/>
+        <activity android:name=".activities.LaporanActivity"/>
+        <activity android:name=".activities.LoginKhususActivity"/>
+        <activity android:name=".activities.UserListActivity">
+        </activity>
+        <activity android:name=".activities.RegisterJasaActivity">
+        </activity>
+        <activity android:name=".activities.LoginJasaActivity">
+        </activity>
+        <activity android:name=".activities.LaundryListActivity">
         </activity>
     </application>
 
