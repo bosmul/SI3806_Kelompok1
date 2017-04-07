@@ -18,7 +18,7 @@ public class MenuJasaActivity extends AppCompatActivity implements View.OnClickL
         getSupportActionBar().hide();
         setContentView(R.layout.activity_menu_jasa);
         btnPromo = (Button) findViewById(R.id.btnPromo);
-        btnPeta = (Button) findViewById(R.id.btnPeta);
+    btnPeta = (Button) findViewById(R.id.btnPeta);
         btnInformasiTempatLaundry=(Button) findViewById(R.id.btnInformasiTempatLaundry);
         btnPesananCustomer = (Button) findViewById(R.id.btnPesananCouumer);
     }

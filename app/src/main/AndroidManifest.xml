@@ -31,7 +31,6 @@
         <activity android:name=".MenuJasaActivity" />
         <activity android:name=".PesanKeluhanActivity" />
         <activity android:name=".PromoActivity" />
-        <activity android:name=".RegistrasiJasaActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
@@ -43,7 +42,8 @@
             android:value="@string/google_maps_key" />
 
         <activity android:name=".MenuAdminActivity" />
-        <activity android:name=".LaporanActivity"></activity>
+        <activity android:name=".LaporanActivity" />
+        <activity android:name=".LoginKhusus"></activity>
     </application>
 
 </manifest>
