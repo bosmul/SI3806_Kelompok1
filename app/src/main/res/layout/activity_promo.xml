@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/colorPrimaryDark"
-        tools:context="com.rpl.kelompok1.gelo.LoginActivity"
+        tools:context="com.rpl.kelompok1.gelo.Activities.LoginActivity"
         android:weightSum="1">
 
         <TextView

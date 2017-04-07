@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/latar"
-    tools:context="com.rpl.kelompok1.gelo.RegisterActivity">
+    tools:context="com.rpl.kelompok1.gelo.Activities.RegisterActivity">
 
     <TextView
         android:layout_width="wrap_content"

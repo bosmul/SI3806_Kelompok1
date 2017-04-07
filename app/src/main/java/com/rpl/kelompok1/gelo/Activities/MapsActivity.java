@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo;
+package com.rpl.kelompok1.gelo.Activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -29,6 +29,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.rpl.kelompok1.gelo.R;
 
 import java.io.IOException;
 import java.util.List;

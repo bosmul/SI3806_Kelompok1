@@ -12,7 +12,7 @@
 
 
 
-    tools:context="com.rpl.kelompok1.gelo.StartActivity">
+    tools:context="com.rpl.kelompok1.gelo.Activities.StartActivity">
 
     <TextView
         android:layout_width="wrap_content"
