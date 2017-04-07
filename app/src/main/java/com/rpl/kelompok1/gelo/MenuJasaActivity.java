@@ -15,6 +15,7 @@ public class MenuJasaActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_menu_jasa);
         btnPromo = (Button) findViewById(R.id.btnPromo);
     btnPeta = (Button) findViewById(R.id.btnPeta);
