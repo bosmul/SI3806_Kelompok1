@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo.Activities;
+package com.rpl.kelompok1.gelo.activities;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -15,9 +15,8 @@ import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.helpers.InputValidation;
 
-
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener  {
-    private final AppCompatActivity activity = LoginActivity.this;
+public class LoginJasaActivity extends AppCompatActivity implements View.OnClickListener  {
+    private final AppCompatActivity activity = LoginJasaActivity.this;
 
     private NestedScrollView nestedScrollView;
 
@@ -34,20 +33,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private InputValidation inputValidation;
     private DatabaseHelper databaseHelper;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
-
-        initViews();
-        initListeners();
-        initObjects();
-    }
-
-    /**
-     * This method is to initialize views
-     */
     private void initViews() {
 
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
@@ -64,28 +49,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    /**
-     * This method is to initialize listeners
-     */
     private void initListeners() {
         appCompatButtonLogin.setOnClickListener(this);
         textViewLinkRegister.setOnClickListener(this);
     }
 
-    /**
-     * This method is to initialize objects to be used
-     */
     private void initObjects() {
         databaseHelper = new DatabaseHelper(activity);
         inputValidation = new InputValidation(activity);
 
     }
 
-    /**
-     * This implemented method is to listen the click on view
-     *
-     * @param v
-     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_jasa);
+        getSupportActionBar().hide();
+
+        initViews();
+        initListeners();
+        initObjects();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -93,16 +78,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 verifyFromSQLite();
                 break;
             case R.id.textViewLinkRegister:
-                // Navigate to RegisterActivity
-                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent intentRegister = new Intent(getApplicationContext(), RegisterJasaActivity.class);
                 startActivity(intentRegister);
                 break;
         }
     }
 
-    /**
-     * This method is to validate the input text fields and verify login credentials from SQLite
-     */
     private void verifyFromSQLite() {
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
@@ -114,25 +95,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
 
-        if (databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim()
+        if (databaseHelper.checkLaundry(textInputEditTextEmail.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
 
-
-            Intent accountsIntent = new Intent(activity, MenuCustomerActivity.class);
+            Intent accountsIntent = new Intent(activity, MapsActivity.class);
             accountsIntent.putExtra("EMAIL", textInputEditTextEmail.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);
-
-
         } else {
-            // Snack Bar to show success message that record is wrong
             Snackbar.make(nestedScrollView, getString(R.string.error_valid_email_password), Snackbar.LENGTH_LONG).show();
         }
     }
 
-    /**
-     * This method is to empty all input edit text
-     */
     private void emptyInputEditText() {
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);

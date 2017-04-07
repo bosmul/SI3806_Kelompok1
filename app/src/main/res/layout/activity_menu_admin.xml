@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,64 +9,41 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.rpl.kelompok1.gelo.Activities.MenuCustomerActivity">
-
-
-
-
+    tools:context="com.rpl.kelompok1.gelo.activities.MenuCustomerActivity">
 
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:text="Menu ADMIN "
+    android:text="DASHBOARD ADMIN"
     android:textSize="30sp"
-    android:padding="20dp"
     android:textColor="@color/Judul"
     android:id="@+id/textView10"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentEnd="true" />
+    android:layout_marginBottom="32dp"
+    />
 
 <Button
-    android:id="@+id/btnPromo"
+    android:id="@+id/btnListUser"
     style="@style/btnStyleOrange"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text=" Tambah Promo"
+    android:text="User"
     android:layout_marginRight="40dp"
     android:layout_marginLeft="40dp"
-
     android:onClick="onClick"
-    android:layout_marginTop="13dp"
-    android:layout_below="@+id/btnLaporanTransaksi"
-    android:layout_centerHorizontal="true" />
-
-
+    android:layout_marginBottom="32dp"
+    />
 
 <Button
-    android:id="@+id/btnTambahPemilikJasa"
+    android:id="@+id/btnListLaundry"
     style="@style/btnStyleOrange"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Tambah Pemilik Jasa Laundry"
+    android:text="Laundry"
     android:layout_marginRight="100dp"
     android:layout_marginLeft="100dp"
-
     android:onClick="onClick"
+    />
 
-    android:layout_alignParentStart="true" />
 
-<Button
-    android:id="@+id/btnLaporanTransaksi"
-    style="@style/btnStyleOrange"
-    android:layout_width="333dp"
-    android:layout_height="59dp"
-    android:text="Laporan Transaksi"
-    android:layout_marginRight="80dp"
-    android:layout_marginLeft="80dp"
-
-    android:onClick="onClick"
-
-    android:layout_below="@+id/btnTambahPemilikJasa" />
-
-</RelativeLayout>
+</LinearLayout>

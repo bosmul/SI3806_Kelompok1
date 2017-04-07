@@ -16,11 +16,11 @@ import java.util.List;
  * Created by Lenovo on 07/04/2017.
  */
 
-public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdapter.UserViewHolder> {
+public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapter.UserViewHolder> {
 
     private List<User> listUsers;
 
-    public UsersRecyclerAdapter(List<User> listUsers) {
+    public UserRecyclerAdapter(List<User> listUsers) {
         this.listUsers = listUsers;
     }
 
@@ -28,7 +28,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
     public UserViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // inflating recycler item view
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_user_recycler, parent, false);
+                .inflate(R.layout.item_list_recycler, parent, false);
 
         return new UserViewHolder(itemView);
     }
@@ -43,7 +43,7 @@ public class UsersRecyclerAdapter extends RecyclerView.Adapter<UsersRecyclerAdap
 
     @Override
     public int getItemCount() {
-        Log.v(UsersRecyclerAdapter.class.getSimpleName(),""+listUsers.size());
+        Log.v(UserRecyclerAdapter.class.getSimpleName(),""+listUsers.size());
         return listUsers.size();
     }
 

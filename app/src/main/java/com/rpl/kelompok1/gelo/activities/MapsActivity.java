@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo.Activities;
+package com.rpl.kelompok1.gelo.activities;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo.Activities;
+package com.rpl.kelompok1.gelo.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -23,27 +23,20 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
         btnPeta = (Button) findViewById(R.id.btnPeta);
         btnInformasiTempatLaundry=(Button) findViewById(R.id.btnInformasiTempatLaundry);
         btnPesanKeluhan = (Button) findViewById(R.id.btnPesanKeluhan);
-
     }
-
-
 
     public void onClick(View view) {
         if (view == btnPromo) {
             startActivity(new Intent(MenuCustomerActivity.this, PromoActivity.class));
-
         }
         if (view == btnPeta) {
             startActivity(new Intent(MenuCustomerActivity.this, MapsActivity.class));
-
         }
         if (view == btnInformasiTempatLaundry) {
-            startActivity(new Intent(MenuCustomerActivity.this, InformasiJasaLaundryActivity.class));
-
+            startActivity(new Intent(MenuCustomerActivity.this, LaundryListActivity.class));
         }
         if (view == btnPesanKeluhan) {
             startActivity(new Intent(MenuCustomerActivity.this, PesanKeluhanActivity.class));
-
         }
 
 

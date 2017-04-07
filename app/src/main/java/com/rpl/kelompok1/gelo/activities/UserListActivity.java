@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo.Activities;
+package com.rpl.kelompok1.gelo.activities;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.rpl.kelompok1.gelo.R;
-import com.rpl.kelompok1.gelo.adapters.UsersRecyclerAdapter;
+import com.rpl.kelompok1.gelo.adapters.UserRecyclerAdapter;
 import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.models.User;
 
@@ -21,7 +21,7 @@ public class UserListActivity extends AppCompatActivity {
     private AppCompatTextView textViewName;
     private RecyclerView recyclerViewUsers;
     private List<User> listUsers;
-    private UsersRecyclerAdapter usersRecyclerAdapter;
+    private UserRecyclerAdapter mUserRecyclerAdapter;
     private DatabaseHelper databaseHelper;
 
     @Override
@@ -42,13 +42,13 @@ public class UserListActivity extends AppCompatActivity {
      */
     private void initObjects() {
         listUsers = new ArrayList<>();
-        usersRecyclerAdapter = new UsersRecyclerAdapter(listUsers);
+        mUserRecyclerAdapter = new UserRecyclerAdapter(listUsers);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerViewUsers.setLayoutManager(mLayoutManager);
         recyclerViewUsers.setItemAnimator(new DefaultItemAnimator());
         recyclerViewUsers.setHasFixedSize(true);
-        recyclerViewUsers.setAdapter(usersRecyclerAdapter);
+        recyclerViewUsers.setAdapter(mUserRecyclerAdapter);
         databaseHelper = new DatabaseHelper(activity);
 
         String emailFromIntent = getIntent().getStringExtra("EMAIL");
@@ -73,7 +73,7 @@ public class UserListActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void aVoid) {
                 super.onPostExecute(aVoid);
-                usersRecyclerAdapter.notifyDataSetChanged();
+                mUserRecyclerAdapter.notifyDataSetChanged();
             }
         }.execute();
     }

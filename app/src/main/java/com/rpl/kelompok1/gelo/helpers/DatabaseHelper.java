@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.rpl.kelompok1.gelo.models.Laundry;
 import com.rpl.kelompok1.gelo.models.User;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.List;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Version
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Database Name
     private static final String DATABASE_NAME = "Gelo.db";
@@ -41,6 +42,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ADMIN_EMAIL = "admin_email";
     public static final String COLUMN_ADMIN_PASSWORD = "admin_password";
 
+    // Laundry table name
+    private static final String TABLE_LAUNDRY = "laundry";
+    // Laundry Table Columns names
+    private static final String COLUMN_LAUNDRY_ID = "laundry_id";
+    private static final String COLUMN_LAUNDRY_NAME = "laundry_name";
+    private static final String COLUMN_LAUNDRY_EMAIL = "laundry_email";
+    private static final String COLUMN_LAUNDRY_PASSWORD = "laundry_password";
+    private static final String COLUMN_LAUNDRY_ALAMAT = "laundry_alamat";
+    private static final String COLUMN_LAUNDRY_TELEPON = "laundry_telepon";
+
 
     // create table sql query
     private String CREATE_USER_TABLE = "CREATE TABLE " + TABLE_USER + "("
@@ -59,10 +70,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_ADMIN_PASSWORD + " TEXT"
             + ")";
 
+    private String CREATE_LAUNDRY_TABLE = "CREATE TABLE " + TABLE_LAUNDRY + "("
+            + COLUMN_LAUNDRY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + COLUMN_LAUNDRY_NAME + " TEXT,"
+            + COLUMN_LAUNDRY_EMAIL + " TEXT,"
+            + COLUMN_LAUNDRY_PASSWORD + " TEXT,"
+            + COLUMN_LAUNDRY_ALAMAT + " TEXT,"
+            + COLUMN_LAUNDRY_TELEPON + " TEXT"
+            + ")";
+
     // drop table sql query
     private String DROP_USER_TABLE = "DROP TABLE IF EXISTS " + TABLE_USER;
 
     private String DROP_ADMIN_TABLE = "DROP TABLE IF EXISTS " + TABLE_ADMIN;
+
+    private String DROP_LAUNDRY_TABLE = "DROP TABLE IF EXISTS " + TABLE_LAUNDRY;
 
     /**
      * Constructor
@@ -77,6 +99,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_USER_TABLE);
         db.execSQL(CREATE_ADMIN_TABLE);
+        db.execSQL(CREATE_LAUNDRY_TABLE);
     }
 
 
@@ -86,6 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         //Drop User Table if exist
         db.execSQL(DROP_USER_TABLE);
         db.execSQL(DROP_ADMIN_TABLE);
+        db.execSQL(DROP_LAUNDRY_TABLE);
 
         // Create tables again
         onCreate(db);
@@ -109,6 +133,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert(TABLE_USER, null, values);
+        db.close();
+    }
+
+    public void addLaundry(Laundry laundry) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_LAUNDRY_NAME, laundry.getName());
+        values.put(COLUMN_LAUNDRY_EMAIL, laundry.getEmail());
+        values.put(COLUMN_LAUNDRY_PASSWORD, laundry.getPassword());
+        values.put(COLUMN_LAUNDRY_ALAMAT, laundry.getAlamat());
+        values.put(COLUMN_LAUNDRY_TELEPON, laundry.getTelepon());
+
+        // Inserting Row
+        db.insert(TABLE_LAUNDRY, null, values);
         db.close();
     }
 
@@ -168,6 +207,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // return user list
         return userList;
+    }
+
+    public List<Laundry> getAllLaundry() {
+        String[] columns = {
+                COLUMN_LAUNDRY_ID,
+                COLUMN_LAUNDRY_EMAIL,
+                COLUMN_LAUNDRY_NAME,
+                COLUMN_LAUNDRY_PASSWORD,
+                COLUMN_LAUNDRY_ALAMAT,
+                COLUMN_LAUNDRY_TELEPON
+        };
+        String sortOrder =
+                COLUMN_LAUNDRY_NAME + " ASC";
+        List<Laundry> laundryList = new ArrayList<Laundry>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(TABLE_LAUNDRY, //Table to query
+                columns,    //columns to return
+                null,        //columns for the WHERE clause
+                null,        //The values for the WHERE clause
+                null,       //group the rows
+                null,       //filter by row groups
+                sortOrder); //The sort order
+
+        if (cursor.moveToFirst()) {
+            do {
+                Laundry laundry = new Laundry();
+                laundry.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(COLUMN_LAUNDRY_ID))));
+                laundry.setName(cursor.getString(cursor.getColumnIndex(COLUMN_LAUNDRY_NAME)));
+                laundry.setEmail(cursor.getString(cursor.getColumnIndex(COLUMN_LAUNDRY_EMAIL)));
+                laundry.setPassword(cursor.getString(cursor.getColumnIndex(COLUMN_LAUNDRY_PASSWORD)));
+                laundry.setAlamat(cursor.getString(cursor.getColumnIndex(COLUMN_LAUNDRY_ALAMAT)));
+                laundry.setTelepon(cursor.getString(cursor.getColumnIndex(COLUMN_LAUNDRY_TELEPON)));
+                laundryList.add(laundry);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return laundryList;
     }
 
     /**
@@ -291,6 +370,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
     public boolean checkAdmin(String email, String password) {
 
         // array of columns to fetch
@@ -311,6 +391,69 @@ public class DatabaseHelper extends SQLiteOpenHelper {
          * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
          */
         Cursor cursor = db.query(TABLE_ADMIN, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                       //filter by row groups
+                null);                      //The sort order
+
+        int cursorCount = cursor.getCount();
+
+        cursor.close();
+        db.close();
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean checkLaundry(String email) {
+
+        String[] columns = {
+                COLUMN_LAUNDRY_ID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = COLUMN_LAUNDRY_EMAIL + " = ?";
+
+        String[] selectionArgs = {email};
+
+        Cursor cursor = db.query(TABLE_LAUNDRY, //Table to query
+                columns,                    //columns to return
+                selection,                  //columns for the WHERE clause
+                selectionArgs,              //The values for the WHERE clause
+                null,                       //group the rows
+                null,                      //filter by row groups
+                null);                      //The sort order
+        int cursorCount = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        if (cursorCount > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * This method to check user exist or not
+     *
+     * @param email
+     * @param password
+     * @return true/false
+     */
+    public boolean checkLaundry(String email, String password) {
+
+        String[] columns = {
+                COLUMN_LAUNDRY_ID
+        };
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selection = COLUMN_LAUNDRY_EMAIL + " = ?" + " AND " + COLUMN_LAUNDRY_PASSWORD + " = ?";
+
+        String[] selectionArgs = {email, password};
+
+        Cursor cursor = db.query(TABLE_LAUNDRY, //Table to query
                 columns,                    //columns to return
                 selection,                  //columns for the WHERE clause
                 selectionArgs,              //The values for the WHERE clause
