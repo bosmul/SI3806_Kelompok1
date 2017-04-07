@@ -1,14 +1,16 @@
-package com.rpl.kelompok1.gelo;
+package com.rpl.kelompok1.gelo.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PromoActivity extends AppCompatActivity {
+import com.rpl.kelompok1.gelo.R;
+
+public class PesanKeluhanActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_promo);
+        setContentView(R.layout.activity_pesan_keluhan);
     }
 }

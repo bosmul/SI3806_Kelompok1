@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.rpl.kelompok1.gelo.StatusActivity"
+    tools:context="com.rpl.kelompok1.gelo.Activities.StatusActivity"
     android:background="@drawable/latar">
 
 

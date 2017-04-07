@@ -8,4 +8,7 @@
     <color name="Like">#808080</color>
     <color name="Judul">#00FF00</color>
 
+    <color name="colorText">#FFFFFF</color>
+    <color name="colorTextHint">#51d8c7</color>
+
 </resources>

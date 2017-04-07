@@ -9,7 +9,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.rpl.kelompok1.gelo.MenuCustomerActivity">
+    tools:context="com.rpl.kelompok1.gelo.Activities.MenuCustomerActivity">
 
 
 

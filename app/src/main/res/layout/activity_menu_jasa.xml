@@ -7,7 +7,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:background="@drawable/latar"
-    tools:context="com.rpl.kelompok1.gelo.MenuJasaActivity"
+    tools:context="com.rpl.kelompok1.gelo.Activities.MenuJasaActivity"
     android:weightSum="1">
 
 

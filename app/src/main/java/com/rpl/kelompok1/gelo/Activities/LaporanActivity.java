@@ -1,7 +1,9 @@
-package com.rpl.kelompok1.gelo;
+package com.rpl.kelompok1.gelo.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.rpl.kelompok1.gelo.R;
 
 public class LaporanActivity extends AppCompatActivity {
 

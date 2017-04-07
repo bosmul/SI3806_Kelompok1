@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@drawable/latar"
-    tools:context="com.rpl.kelompok1.gelo.InformasiJasaLaundryActivity">
+    tools:context="com.rpl.kelompok1.gelo.Activities.InformasiJasaLaundryActivity">
 
     <TextView
         android:id="@+id/textView"

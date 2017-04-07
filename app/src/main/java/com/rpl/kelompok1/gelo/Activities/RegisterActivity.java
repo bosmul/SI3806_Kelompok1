@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo;
+package com.rpl.kelompok1.gelo.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +11,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.models.User;
 import com.rpl.kelompok1.gelo.helpers.InputValidation;
@@ -25,11 +26,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
     private TextInputLayout textInputLayoutConfirmPassword;
+    private TextInputLayout textInputLayoutAlamat;
+    private TextInputLayout textInputLayoutTelepon;
 
     private TextInputEditText textInputEditTextName;
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
     private TextInputEditText textInputEditTextConfirmPassword;
+    private TextInputEditText textInputEditTextAlamat;
+    private TextInputEditText textInputEditTextTelepon;
 
     private AppCompatButton appCompatButtonRegister;
     private AppCompatTextView appCompatTextViewLoginLink;
@@ -59,11 +64,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
         textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
+        textInputLayoutTelepon = (TextInputLayout) findViewById(R.id.textInputLayoutTelepon);
+        textInputLayoutAlamat = (TextInputLayout) findViewById(R.id.textInputLayoutAlamat);
 
         textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
         textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
         textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
+        textInputEditTextAlamat = (TextInputEditText) findViewById(R.id.textInputEditTextAlamat);
+        textInputEditTextTelepon = (TextInputEditText) findViewById(R.id.textInputEditTextTelepon);
 
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
@@ -117,6 +126,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
             return;
         }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextAlamat, textInputLayoutAlamat, getString(R.string.error_message_address))) {
+            return;
+        }
+        if (!inputValidation.isInputEditTextFilled(textInputEditTextTelepon, textInputLayoutTelepon, getString(R.string.error_message_telephone))) {
+            return;
+        }
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
@@ -136,6 +151,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             user.setName(textInputEditTextName.getText().toString().trim());
             user.setEmail(textInputEditTextEmail.getText().toString().trim());
             user.setPassword(textInputEditTextPassword.getText().toString().trim());
+            user.setAlamat(textInputEditTextAlamat.getText().toString().trim());
+            user.setTelepon(textInputEditTextTelepon.getText().toString().trim());
 
             databaseHelper.addUser(user);
 
@@ -160,5 +177,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
         textInputEditTextConfirmPassword.setText(null);
+        textInputEditTextAlamat.setText(null);
+        textInputEditTextTelepon.setText(null);
     }
 }

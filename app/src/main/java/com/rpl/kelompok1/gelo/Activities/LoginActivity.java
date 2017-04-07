@@ -1,4 +1,4 @@
-package com.rpl.kelompok1.gelo;
+package com.rpl.kelompok1.gelo.Activities;
 
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
@@ -11,6 +11,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.helpers.InputValidation;
 

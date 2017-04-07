@@ -9,7 +9,7 @@
                                             android:paddingRight="20dp"
                                             android:paddingTop="20dp"
                                             android:background="@drawable/latar"
-                                            tools:context="com.rpl.kelompok1.gelo.LoginActivity">
+                                            tools:context="com.rpl.kelompok1.gelo.Activities.LoginActivity">
 <LinearLayout
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
