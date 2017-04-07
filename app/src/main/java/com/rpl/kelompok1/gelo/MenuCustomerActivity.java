@@ -15,6 +15,7 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_menu_customer);
         btnPromo = (Button) findViewById(R.id.btnPromo);
         btnPeta = (Button) findViewById(R.id.btnPeta);

@@ -8,15 +8,16 @@
     android:orientation="vertical"
     android:layout_gravity="center"
     android:gravity="center"
-    android:background="@color/Like"
+    android:background="@drawable/logo">
+
+
 
     tools:context="com.rpl.kelompok1.gelo.StartActivity">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Aplikasi Laundry"
-        android:textSize="30sp"
+        android:layout_height="440dp"
+        android:textSize="40sp"
         android:padding="20dp"
         android:textColor="@color/Judul" />
 
@@ -24,7 +25,7 @@
         android:id="@+id/btnReg"
         style="@style/btnStyleOrange"
         android:layout_width="340dp"
-        android:layout_height="50dp"
+        android:layout_height="63dp"
         android:text="START" />
 </LinearLayout>
 

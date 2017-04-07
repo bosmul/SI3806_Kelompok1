@@ -14,6 +14,7 @@ public class StartActivity extends AppCompatActivity implements OnClickListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_start);
         btnReg = (Button) findViewById(R.id.btnReg);
         btnReg.setOnClickListener(this);

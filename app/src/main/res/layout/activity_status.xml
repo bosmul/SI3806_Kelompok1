@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     tools:context="com.rpl.kelompok1.gelo.StatusActivity"
-    android:background="@color/colorPrimaryDark">
+    android:background="@drawable/latar">
 
 
 
