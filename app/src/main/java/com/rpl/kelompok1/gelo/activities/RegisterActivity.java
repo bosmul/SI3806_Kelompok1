@@ -1,24 +1,33 @@
 package com.rpl.kelompok1.gelo.activities;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.rpl.kelompok1.gelo.R;
-import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.models.User;
 import com.rpl.kelompok1.gelo.helpers.InputValidation;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.ArrayList;
+import java.util.List;
 
-    private final AppCompatActivity activity = RegisterActivity.this;
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     private NestedScrollView nestedScrollView;
 
@@ -39,8 +48,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private AppCompatButton appCompatButtonRegister;
     private AppCompatTextView appCompatTextViewLoginLink;
 
+    private ProgressDialog progressDialog;
+
+    List<User> mUserList;
+    DatabaseReference databaseUser;
+
+    private FirebaseAuth firebaseAuth;
+
     private InputValidation inputValidation;
-    private DatabaseHelper databaseHelper;
     private User user;
 
     @Override
@@ -54,9 +69,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         initObjects();
     }
 
-    /**
-     * This method is to initialize views
-     */
     private void initViews() {
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
@@ -77,40 +89,28 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
 
         appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
-
     }
 
-    /**
-     * This method is to initialize listeners
-     */
     private void initListeners() {
         appCompatButtonRegister.setOnClickListener(this);
         appCompatTextViewLoginLink.setOnClickListener(this);
-
     }
 
-    /**
-     * This method is to initialize objects to be used
-     */
     private void initObjects() {
-        inputValidation = new InputValidation(activity);
-        databaseHelper = new DatabaseHelper(activity);
+        inputValidation = new InputValidation(RegisterActivity.this);
         user = new User();
-
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        mUserList = new ArrayList<>();
+        databaseUser = FirebaseDatabase.getInstance().getReference("user");
     }
 
-
-    /**
-     * This implemented method is to listen the click on view
-     *
-     * @param v
-     */
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
 
             case R.id.appCompatButtonRegister:
-                postDataToSQLite();
+                registerUser();
                 break;
 
             case R.id.appCompatTextViewLoginLink:
@@ -119,19 +119,43 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    /**
-     * This method is to validate the input text fields and post data to SQLite
-     */
-    private void postDataToSQLite() {
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
-            return;
+    /*private void addUser() {
+        //getting the values to save
+        String name = textInputEditTextName.getText().toString().trim();
+        String alamat = textInputEditTextAlamat.getText().toString();
+        String telepon = textInputEditTextTelepon.getText().toString();
+
+        //checking if the value is provided
+        if (!TextUtils.isEmpty(name)) {
+
+            //getting a unique id using push().getKey() method
+            //it will create a unique id and we will use it as the Primary Key for our Artist
+            String id = databaseUser.push().getKey();
+
+            //creating an Artist Object
+            User = new Artist(id, name, genre);
+
+            //Saving the Artist
+            databaseArtists.child(id).setValue(artist);
+
+            //setting edittext to blank again
+            editTextName.setText("");
+
+            //displaying a success toast
+            Toast.makeText(this, "Artist added", Toast.LENGTH_LONG).show();
+        } else {
+            //if the value is not given displaying a toast
+            Toast.makeText(this, "Please enter a name", Toast.LENGTH_LONG).show();
         }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextAlamat, textInputLayoutAlamat, getString(R.string.error_message_address))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextTelepon, textInputLayoutTelepon, getString(R.string.error_message_telephone))) {
-            return;
-        }
+    }*/
+
+    private void registerUser(){
+
+        //getting email and password from edit texts
+        String email = textInputEditTextEmail.getText().toString().trim();
+        String password  = textInputEditTextPassword.getText().toString().trim();
+
+        //checking if email and passwords are empty
         if (!inputValidation.isInputEditTextFilled(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
             return;
         }
@@ -146,32 +170,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
 
-        if (!databaseHelper.checkUser(textInputEditTextEmail.getText().toString().trim())) {
+        //if the email and password are not empty
+        //displaying a progress dialog
+        progressDialog.setMessage("Registering Please Wait...");
+        progressDialog.show();
 
-            user.setName(textInputEditTextName.getText().toString().trim());
-            user.setEmail(textInputEditTextEmail.getText().toString().trim());
-            user.setPassword(textInputEditTextPassword.getText().toString().trim());
-            user.setAlamat(textInputEditTextAlamat.getText().toString().trim());
-            user.setTelepon(textInputEditTextTelepon.getText().toString().trim());
-
-            databaseHelper.addUser(user);
-
-            // Snack Bar to show success message that record saved successfully
-            Snackbar.make(nestedScrollView, getString(R.string.success_message), Snackbar.LENGTH_LONG).show();
-            emptyInputEditText();
-
-
-        } else {
-            // Snack Bar to show error message that record already exists
-            Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
-        }
-
-
+        //creating a new user
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        //checking if success
+                        if(task.isSuccessful()){
+                            //display some message here
+                            Toast.makeText(RegisterActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
+                        }else{
+                            //display some message here
+                            Toast.makeText(RegisterActivity.this,"Registration Error", Toast.LENGTH_LONG).show();
+                        }
+                        progressDialog.dismiss();
+                        emptyInputEditText();
+                    }
+                });
     }
 
-    /**
-     * This method is to empty all input edit text
-     */
     private void emptyInputEditText() {
         textInputEditTextName.setText(null);
         textInputEditTextEmail.setText(null);
