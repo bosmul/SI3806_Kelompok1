@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.adapters.UserRecyclerAdapter;
-import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.models.User;
 
 import java.util.ArrayList;
@@ -22,7 +21,9 @@ public class UserListActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUsers;
     private List<User> listUsers;
     private UserRecyclerAdapter mUserRecyclerAdapter;
-    private DatabaseHelper databaseHelper;
+//    private DatabaseHelper databaseHelper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class UserListActivity extends AppCompatActivity {
         recyclerViewUsers.setItemAnimator(new DefaultItemAnimator());
         recyclerViewUsers.setHasFixedSize(true);
         recyclerViewUsers.setAdapter(mUserRecyclerAdapter);
-        databaseHelper = new DatabaseHelper(activity);
+//        databaseHelper = new DatabaseHelper(activity);
 
         String emailFromIntent = getIntent().getStringExtra("EMAIL");
         textViewName.setText(emailFromIntent);
@@ -66,7 +67,7 @@ public class UserListActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) {
                 listUsers.clear();
-                listUsers.addAll(databaseHelper.getAllUser());
+//                listUsers.addAll(databaseHelper.getAllUser());
                 return null;
             }
 

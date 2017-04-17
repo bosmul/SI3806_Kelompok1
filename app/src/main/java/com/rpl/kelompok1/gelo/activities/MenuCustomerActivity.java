@@ -14,6 +14,8 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
     private Button btnInformasiTempatLaundry;
     private Button btnPesanKeluhan;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

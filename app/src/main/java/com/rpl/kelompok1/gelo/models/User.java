@@ -7,11 +7,11 @@ public class User {
 
     private String id, name, email, password, alamat, telepon;
 
-    public User(String id, String name, String email, String password, String alamat, String telepon) {
+
+    public User(String id, String name, String email, String alamat, String telepon) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
         this.alamat = alamat;
         this.telepon = telepon;
     }
