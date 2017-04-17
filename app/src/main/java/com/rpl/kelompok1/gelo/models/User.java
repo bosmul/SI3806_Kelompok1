@@ -1,11 +1,14 @@
 package com.rpl.kelompok1.gelo.models;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by lalit on 9/12/2016.
  */
 public class User {
 
     private String id, name, email, password, alamat, telepon;
+    private LatLng mLatLng;
 
 
     public User(String id, String name, String email, String alamat, String telepon) {

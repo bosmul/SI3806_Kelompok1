@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -69,6 +70,17 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onStop();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK){
+                String alamat=data.getStringExtra("alamat");
+                textInputEditTextAlamat.setText(alamat);
+            }
+        }
+    }
+
     private void writeNewUser(String userId, String name, String email, String alamat, String telepon) {
         User user = new User(userId, name, email, alamat, telepon);
         mDatabase.child(userId).setValue(user);
@@ -118,6 +130,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void initListeners() {
         appCompatButtonRegister.setOnClickListener(this);
         appCompatTextViewLoginLink.setOnClickListener(this);
+        textInputEditTextAlamat.setOnClickListener(this);
     }
 
     private void initObjects() {
@@ -127,7 +140,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         progressDialog = new ProgressDialog(this);
         mUserList = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
-
     }
 
     @Override
@@ -136,9 +148,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.appCompatButtonRegister:
                 registerUser();
                 break;
-
             case R.id.appCompatTextViewLoginLink:
                 finish();
+                break;
+            case R.id.textInputEditTextAlamat:
+                startActivityForResult(new Intent(RegisterActivity.this, MapsActivity.class), 1);
                 break;
         }
     }

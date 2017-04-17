@@ -47,10 +47,6 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
         return listUsers.size();
     }
 
-
-    /**
-     * ViewHolder class
-     */
     public class UserViewHolder extends RecyclerView.ViewHolder {
 
         public AppCompatTextView textViewName;
@@ -66,6 +62,4 @@ public class UserRecyclerAdapter extends RecyclerView.Adapter<UserRecyclerAdapte
             textViewTelepon = (AppCompatTextView) view.findViewById(R.id.textViewTelepon);
         }
     }
-
-
 }
