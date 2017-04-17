@@ -23,6 +23,8 @@ public class LaundryRecyclerAdapter  extends RecyclerView.Adapter<LaundryRecycle
         this.listLaundry = listLaundry;
     }
 
+
+
     @Override
     public LaundryRecyclerAdapter.LaundryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // inflating recycler item view

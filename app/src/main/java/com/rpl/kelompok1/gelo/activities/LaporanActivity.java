@@ -7,6 +7,7 @@ import com.rpl.kelompok1.gelo.R;
 
 public class LaporanActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -12,6 +12,7 @@
     <string name="error_message_name">Enter Full Name</string>
     <string name="error_message_address">Enter Address</string>
     <string name="error_message_telephone">Enter Telephone Number</string>
+    <string name="error_message_telephoneinvalid">Telephone Number Must Be Between 12 and 14 Digits</string>
     <string name="error_message_email">Enter Valid Email</string>
     <string name="error_message_age">Enter Age</string>
     <string name="error_message_password">Enter Password</string>

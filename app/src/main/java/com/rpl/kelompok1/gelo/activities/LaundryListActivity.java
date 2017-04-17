@@ -10,10 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.adapters.LaundryRecyclerAdapter;
-import com.rpl.kelompok1.gelo.adapters.UserRecyclerAdapter;
-import com.rpl.kelompok1.gelo.helpers.DatabaseHelper;
 import com.rpl.kelompok1.gelo.models.Laundry;
-import com.rpl.kelompok1.gelo.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +21,9 @@ public class LaundryListActivity extends AppCompatActivity {
     private RecyclerView recyclerViewLaundry;
     private List<Laundry> listLaundry;
     private LaundryRecyclerAdapter mLaundryRecyclerAdapter;
-    private DatabaseHelper databaseHelper;
+//    private DatabaseHelper databaseHelper;
+
+
 
     private void initViews() {
         textViewName = (AppCompatTextView) findViewById(R.id.textViewName);
@@ -43,7 +42,7 @@ public class LaundryListActivity extends AppCompatActivity {
         recyclerViewLaundry.setItemAnimator(new DefaultItemAnimator());
         recyclerViewLaundry.setHasFixedSize(true);
         recyclerViewLaundry.setAdapter(mLaundryRecyclerAdapter);
-        databaseHelper = new DatabaseHelper(activity);
+//        databaseHelper = new DatabaseHelper(activity);
 
         String emailFromIntent = getIntent().getStringExtra("EMAIL");
         textViewName.setText(emailFromIntent);
@@ -66,7 +65,7 @@ public class LaundryListActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... params) {
                 listLaundry.clear();
-                listLaundry.addAll(databaseHelper.getAllLaundry());
+//                listLaundry.addAll(databaseHelper.getAllLaundry());
                 return null;
             }
 
