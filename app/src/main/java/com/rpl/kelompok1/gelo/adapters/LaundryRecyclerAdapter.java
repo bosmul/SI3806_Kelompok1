@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.firebase.database.DatabaseReference;
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.models.Laundry;
 
@@ -22,8 +23,6 @@ public class LaundryRecyclerAdapter  extends RecyclerView.Adapter<LaundryRecycle
     public LaundryRecyclerAdapter(List<Laundry> listLaundry) {
         this.listLaundry = listLaundry;
     }
-
-
 
     @Override
     public LaundryRecyclerAdapter.LaundryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
