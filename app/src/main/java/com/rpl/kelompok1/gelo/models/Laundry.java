@@ -5,14 +5,24 @@ package com.rpl.kelompok1.gelo.models;
  */
 
 public class Laundry {
-    private int id;
-    private String name, email, password, alamat, telepon;
+    private String id, name, email, password, alamat, telepon;
 
-    public int getId() {
+    public Laundry() {
+    }
+
+    public Laundry(String id, String name, String email, String alamat, String telepon) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.alamat = alamat;
+        this.telepon = telepon;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
