@@ -47,14 +47,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onStart() {
         super.onStart();
-        if(firebaseAuth.getCurrentUser() != null){
+        /*if(firebaseAuth.getCurrentUser() != null){
             //that means user is already logged in
             //so close this activity
             finish();
 
             //and open profile activity
             startActivity(new Intent(getApplicationContext(), MenuCustomerActivity.class));
-        }
+        }*/
     }
 
     @Override
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
-                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent intentRegister = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intentRegister);
                 emptyInputEditText();
 
