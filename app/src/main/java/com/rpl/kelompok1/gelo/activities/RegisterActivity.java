@@ -38,14 +38,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
     private TextInputLayout textInputLayoutConfirmPassword;
-    private TextInputLayout textInputLayoutAlamat;
     private TextInputLayout textInputLayoutTelepon;
 
     private TextInputEditText textInputEditTextName;
     private TextInputEditText textInputEditTextEmail;
     private TextInputEditText textInputEditTextPassword;
     private TextInputEditText textInputEditTextConfirmPassword;
-    private TextInputEditText textInputEditTextAlamat;
     private TextInputEditText textInputEditTextTelepon;
 
     private AppCompatButton appCompatButtonRegister;
@@ -68,17 +66,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onStop() {
         super.onStop();
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
-            if(resultCode == RESULT_OK){
-                String alamat=data.getStringExtra("alamat");
-                textInputEditTextAlamat.setText(alamat);
-            }
-        }
     }
 
     private void writeNewUser(String userId, String name, String email, String telepon) {
@@ -127,7 +114,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private void initListeners() {
         appCompatButtonRegister.setOnClickListener(this);
         appCompatTextViewLoginLink.setOnClickListener(this);
-        textInputEditTextAlamat.setOnClickListener(this);
     }
 
     private void initObjects() {
@@ -159,9 +145,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             return;
         }
         if (!inputValidation.isInputEditTextEmail(textInputEditTextEmail, textInputLayoutEmail, getString(R.string.error_message_email))) {
-            return;
-        }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextAlamat, textInputLayoutAlamat, getString(R.string.error_message_address))) {
             return;
         }
         if (!inputValidation.isInputEditTextFilled(textInputEditTextName, textInputLayoutName, getString(R.string.error_message_name))) {
@@ -208,7 +191,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextEmail.setText(null);
         textInputEditTextPassword.setText(null);
         textInputEditTextConfirmPassword.setText(null);
-        textInputEditTextAlamat.setText(null);
         textInputEditTextTelepon.setText(null);
     }
 }
