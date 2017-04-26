@@ -11,11 +11,10 @@ public class User {
     private LatLng mLatLng;
 
 
-    public User(String id, String name, String email, String alamat, String telepon) {
+    public User(String id, String name, String email, String telepon) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.alamat = alamat;
         this.telepon = telepon;
     }
 

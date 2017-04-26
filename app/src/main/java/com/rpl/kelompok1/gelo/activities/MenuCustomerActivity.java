@@ -29,7 +29,7 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
 
     public void onClick(View view) {
         if (view == btnPromo) {
-            startActivity(new Intent(MenuCustomerActivity.this, PromoActivity.class));
+            startActivity(new Intent(MenuCustomerActivity.this, OrderActivity.class));
         }
         if (view == btnPeta) {
             startActivity(new Intent(MenuCustomerActivity.this, MapsActivity.class));

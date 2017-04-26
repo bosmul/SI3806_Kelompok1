@@ -81,17 +81,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    private void writeNewUser(String userId, String name, String email, String alamat, String telepon) {
-        User user = new User(userId, name, email, alamat, telepon);
+    private void writeNewUser(String userId, String name, String email, String telepon) {
+        User user = new User(userId, name, email, telepon);
         mDatabase.child(userId).setValue(user);
     }
 
     private void onAuthSuccess(FirebaseUser user) {
         String nama =textInputEditTextName.getText().toString();
         String telepon = textInputEditTextTelepon.getText().toString();
-        String alamat = textInputEditTextAlamat.getText().toString();
         // Write new user
-        writeNewUser(user.getUid(), nama, user.getEmail(), alamat, telepon);
+        writeNewUser(user.getUid(), nama, user.getEmail(), telepon);
     }
 
     @Override
@@ -113,13 +112,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
         textInputLayoutConfirmPassword = (TextInputLayout) findViewById(R.id.textInputLayoutConfirmPassword);
         textInputLayoutTelepon = (TextInputLayout) findViewById(R.id.textInputLayoutTelepon);
-        textInputLayoutAlamat = (TextInputLayout) findViewById(R.id.textInputLayoutAlamat);
 
         textInputEditTextName = (TextInputEditText) findViewById(R.id.textInputEditTextName);
         textInputEditTextEmail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
         textInputEditTextPassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
         textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
-        textInputEditTextAlamat = (TextInputEditText) findViewById(R.id.textInputEditTextAlamat);
         textInputEditTextTelepon = (TextInputEditText) findViewById(R.id.textInputEditTextTelepon);
 
         appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
@@ -151,9 +148,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             case R.id.appCompatTextViewLoginLink:
                 finish();
                 break;
-            case R.id.textInputEditTextAlamat:
-                startActivityForResult(new Intent(RegisterActivity.this, MapsActivity.class), 1);
-                break;
         }
     }
 
@@ -179,7 +173,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         if (!inputValidation.isInputEditTextTelepon(textInputEditTextTelepon, textInputLayoutTelepon, getString(R.string.error_message_telephoneinvalid))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password))) {
+        if (!inputValidation.isInputEditTextPassword(textInputEditTextPassword, textInputLayoutPassword, getString(R.string.error_message_password))) {
             return;
         }
         if (!inputValidation.isInputEditTextMatches(textInputEditTextPassword, textInputEditTextConfirmPassword,
