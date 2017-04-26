@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.helpers.InputValidation;
 
@@ -39,6 +41,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private FirebaseAuth firebaseAuth;
 
     private InputValidation inputValidation;
+
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(firebaseAuth.getCurrentUser() != null){
+            //that means user is already logged in
+            //so close this activity
+            finish();
+
+            //and open profile activity
+            startActivity(new Intent(getApplicationContext(), MenuCustomerActivity.class));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,27 +82,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
 
-        /*if(firebaseAuth.getCurrentUser() != null){
-            //that means user is already logged in
-            //so close this activity
-            finish();
 
-            //and open profile activity
-            startActivity(new Intent(getApplicationContext(), MenuCustomerActivity.class));
-        }*/
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
-//                verifyFromSQLite();
                 userLogin();
                 break;
             case R.id.textViewLinkRegister:
                 // Navigate to RegisterActivity
                 Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
                 startActivity(intentRegister);
+                emptyInputEditText();
+
                 break;
         }
     }
@@ -122,6 +133,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             emptyInputEditText();
                             finish();
                             startActivity(new Intent(getApplicationContext(), MenuCustomerActivity.class));
+                        }else{
+                            Toast.makeText(LoginActivity.this,"Login Error", Toast.LENGTH_LONG).show();
                         }
                     }
                 });

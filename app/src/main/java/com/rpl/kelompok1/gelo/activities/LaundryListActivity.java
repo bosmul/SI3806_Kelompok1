@@ -1,11 +1,16 @@
 package com.rpl.kelompok1.gelo.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,7 +27,7 @@ import java.util.List;
 public class LaundryListActivity extends AppCompatActivity {
     private AppCompatActivity activity = LaundryListActivity.this;
     private AppCompatTextView textViewName;
-    private RecyclerView recyclerViewLaundry;
+    private ListView listViewLaundry;
     private List<Laundry> listLaundry;
     private LaundryRecyclerAdapter mLaundryRecyclerAdapter;
     private DatabaseReference mDatabase;
@@ -45,9 +50,9 @@ public class LaundryListActivity extends AppCompatActivity {
                     listLaundry.add(laundry);
                 }
                 //creating adapter
-                mLaundryRecyclerAdapter = new LaundryRecyclerAdapter(listLaundry);
+                mLaundryRecyclerAdapter = new LaundryRecyclerAdapter(LaundryListActivity.this, listLaundry);
                 //attaching adapter to the listview
-                recyclerViewLaundry.setAdapter(mLaundryRecyclerAdapter);
+                listViewLaundry.setAdapter(mLaundryRecyclerAdapter);
             }
 
             @Override
@@ -59,31 +64,45 @@ public class LaundryListActivity extends AppCompatActivity {
 
     private void initViews() {
         textViewName = (AppCompatTextView) findViewById(R.id.textViewName);
-        recyclerViewLaundry = (RecyclerView) findViewById(R.id.recyclerViewLaundry);
+        listViewLaundry = (ListView) findViewById(R.id.listViewLaundry);
     }
 
     private void initObjects() {
         listLaundry = new ArrayList<>();
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerViewLaundry.setLayoutManager(mLayoutManager);
-        recyclerViewLaundry.setItemAnimator(new DefaultItemAnimator());
-        recyclerViewLaundry.setHasFixedSize(true);
-        recyclerViewLaundry.setAdapter(mLaundryRecyclerAdapter);
-
         String emailFromIntent = getIntent().getStringExtra("EMAIL");
         textViewName.setText(emailFromIntent);
     }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_laundry_list);
+        getSupportActionBar().hide();
 
         initViews();
         initObjects();
         mDatabase = FirebaseDatabase.getInstance().getReference("laundry");
 
+        listViewLaundry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                //getting the selected artist
+                Laundry laundry = listLaundry.get(i);
 
+
+                //putting artist name and id to intent
+                String alamat = laundry.getAlamat();
+                String id = laundry.getId();
+                Intent setalamat = new Intent(LaundryListActivity.this, RegisterActivity.class);
+                setalamat.putExtra("alamat", alamat);
+                setalamat.putExtra("id", id);
+                setResult(RESULT_OK, setalamat);
+                Toast.makeText(LaundryListActivity.this, "Info window clicked", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
     }
 }
