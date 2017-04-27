@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@drawable/latar"
+    android:background="@drawable/gelomenu"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.rpl.kelompok1.gelo.activities.OrderActivity">
     <ScrollView
@@ -56,11 +56,13 @@
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/appCompatButtonOrder"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:background="@color/colorAccent"
-                android:text="Order" />
+                android:layout_gravity="center"
+                android:background="@color/wallet_holo_blue_light"
+                android:text="Order"
+                android:textColor="@color/white"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
