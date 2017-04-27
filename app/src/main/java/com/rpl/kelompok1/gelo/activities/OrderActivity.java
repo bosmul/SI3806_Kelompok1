@@ -9,6 +9,7 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +25,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
     FirebaseUser user;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mDatabase;
-    String idOrder, idLaundry,idUser, alamatLaundry, alamatUser, tipe, harga, status;
+    String idOrder, idLaundry,idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, tipe, berat, harga, status;
     Spinner tipeLaundry;
     AppCompatButton order;
 
@@ -64,15 +65,14 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         if (requestCode == 1) {
             if(resultCode == RESULT_OK){
                 alamatUser=data.getStringExtra("alamat");
-                String getalamatUser=data.getStringExtra("alamat");
-                alamat.setText(getalamatUser);
+                alamat.setText(alamatUser);
             }
         } if (requestCode == 2) {
             if(resultCode == RESULT_OK){
                 alamatLaundry=data.getStringExtra("alamat");
-                String getalamatLaundry=data.getStringExtra("alamat");
                 idLaundry=data.getStringExtra("id");
-                laundry.setText(getalamatLaundry);
+                namaLaundry=data.getStringExtra("nama");
+                laundry.setText(alamatLaundry);
             }
         }
     }
@@ -81,9 +81,10 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         idOrder = mDatabase.push().getKey();
         idUser = user.getUid();
         tipe = tipeLaundry.getSelectedItem().toString();
+        berat = "0";
         harga = "0";
         status = "dipesan";
-        Order order = new Order(idOrder, idLaundry, idUser, alamatLaundry, alamatUser, tipe, harga, status);
+        Order order = new Order(idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, tipe, berat, harga, status);
         mDatabase.child(idOrder).setValue(order);
     }
 
@@ -98,7 +99,10 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.appCompatButtonOrder:
                 writeNewOrder();
+                finish();
                 break;
         }
     }
+
+
 }

@@ -9,47 +9,53 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rpl.kelompok1.gelo.R;
-import com.rpl.kelompok1.gelo.adapters.LaundryAdapter;
-import com.rpl.kelompok1.gelo.models.Laundry;
+import com.rpl.kelompok1.gelo.adapters.OrderAdapter;
+import com.rpl.kelompok1.gelo.models.Order;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LaundryListActivity extends AppCompatActivity {
-    private AppCompatActivity activity = LaundryListActivity.this;
+public class OrderListActivity extends AppCompatActivity {
+    private AppCompatActivity activity = OrderListActivity.this;
     private AppCompatTextView textViewName;
-    private ListView listViewLaundry;
-    private List<Laundry> listLaundry;
-    private LaundryAdapter mLaundryAdapter;
+    private ListView listViewOrder;
+    private List<Order> listOrder;
+    private OrderAdapter mOrderAdapter;
     private DatabaseReference mDatabase;
+    private FirebaseAuth firebaseAuth;
+    Query query;
+    FirebaseUser user;
 
     @Override
     protected void onStart() {
         super.onStart();
-        mDatabase.addValueEventListener(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 //clearing the previous artist list
-                listLaundry.clear();
+                listOrder.clear();
 
                 //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     //getting artist
-                    Laundry laundry = postSnapshot.getValue(Laundry.class);
+                    Order order = postSnapshot.getValue(Order.class);
                     //adding artist to the list
-                    listLaundry.add(laundry);
+                    listOrder.add(order);
                 }
                 //creating adapter
-                mLaundryAdapter = new LaundryAdapter(LaundryListActivity.this, listLaundry);
+                mOrderAdapter = new OrderAdapter(OrderListActivity.this, listOrder);
                 //attaching adapter to the listview
-                listViewLaundry.setAdapter(mLaundryAdapter);
+                listViewOrder.setAdapter(mOrderAdapter);
             }
 
             @Override
@@ -61,11 +67,11 @@ public class LaundryListActivity extends AppCompatActivity {
 
     private void initViews() {
         textViewName = (AppCompatTextView) findViewById(R.id.textViewName);
-        listViewLaundry = (ListView) findViewById(R.id.listViewLaundry);
+        listViewOrder = (ListView) findViewById(R.id.listViewOrder);
     }
 
     private void initObjects() {
-        listLaundry = new ArrayList<>();
+        listOrder = new ArrayList<>();
 
         String emailFromIntent = getIntent().getStringExtra("EMAIL");
         textViewName.setText(emailFromIntent);
@@ -76,32 +82,34 @@ public class LaundryListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_laundry_list);
+        setContentView(R.layout.activity_order_list);
         getSupportActionBar().hide();
 
         initViews();
         initObjects();
-        mDatabase = FirebaseDatabase.getInstance().getReference("laundry");
+        firebaseAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("order");
+        user = firebaseAuth.getCurrentUser();
+        query =  mDatabase.orderByChild("idUser").equalTo(user.getUid());
 
-        listViewLaundry.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 //getting the selected artist
-                Laundry laundry = listLaundry.get(i);
+                Order order = listOrder.get(i);
 
+                //creating an intent
+                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
 
                 //putting artist name and id to intent
-                String alamat = laundry.getAlamat();
-                String id = laundry.getId();
-                String nama = laundry.getName();
-                Intent setalamat = new Intent(LaundryListActivity.this, RegisterActivity.class);
-                setalamat.putExtra("alamat", alamat);
-                setalamat.putExtra("id", id);
-                setalamat.putExtra("nama", nama);
-                setResult(RESULT_OK, setalamat);
-                Toast.makeText(LaundryListActivity.this, "Info window clicked", Toast.LENGTH_SHORT).show();
-                finish();
+                intent.putExtra(ARTIST_ID, artist.getArtistId());
+                intent.putExtra(ARTIST_NAME, artist.getArtistName());
+
+                //starting the activity with intent
+                startActivity(intent);
             }
-        });
+        });*/
+
+
     }
 }

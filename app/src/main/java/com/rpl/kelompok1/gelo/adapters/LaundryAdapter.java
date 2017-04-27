@@ -2,15 +2,11 @@ package com.rpl.kelompok1.gelo.adapters;
 
 import android.app.Activity;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.models.Laundry;
 
@@ -20,7 +16,7 @@ import java.util.List;
  * Created by Lenovo on 08/04/2017.
  */
 
-public class LaundryRecyclerAdapter extends ArrayAdapter<Laundry> {
+public class LaundryAdapter extends ArrayAdapter<Laundry> {
     private List<Laundry> listLaundry;
     private Activity context;
     public AppCompatTextView textViewName;
@@ -29,8 +25,8 @@ public class LaundryRecyclerAdapter extends ArrayAdapter<Laundry> {
     public AppCompatTextView textViewTelepon;
 
 
-    public LaundryRecyclerAdapter(Activity context, List<Laundry> listLaundry) {
-        super(context, R.layout.item_list_recycler, listLaundry);
+    public LaundryAdapter(Activity context, List<Laundry> listLaundry) {
+        super(context, R.layout.item_list, listLaundry);
         this.context = context;
         this.listLaundry = listLaundry;
     }
@@ -38,7 +34,7 @@ public class LaundryRecyclerAdapter extends ArrayAdapter<Laundry> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_list_recycler, null, true);
+        View view = inflater.inflate(R.layout.item_list, null, true);
 
         textViewName = (AppCompatTextView) view.findViewById(R.id.textViewName);
         textViewEmail = (AppCompatTextView) view.findViewById(R.id.textViewEmail);
@@ -54,21 +50,21 @@ public class LaundryRecyclerAdapter extends ArrayAdapter<Laundry> {
         return view;
     }
 
-    /*public LaundryRecyclerAdapter(List<Laundry> listLaundry) {
+    /*public LaundryAdapter(List<Laundry> listLaundry) {
         this.listLaundry = listLaundry;
     }
 
     @Override
-    public LaundryRecyclerAdapter.LaundryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public LaundryAdapter.LaundryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // inflating recycler item view
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_list_recycler, parent, false);
+                .inflate(R.layout.item_list, parent, false);
 
-        return new LaundryRecyclerAdapter.LaundryViewHolder(itemView);
+        return new LaundryAdapter.LaundryViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(LaundryRecyclerAdapter.LaundryViewHolder holder, int position) {
+    public void onBindViewHolder(LaundryAdapter.LaundryViewHolder holder, int position) {
         holder.textViewName.setText(listLaundry.get(position).getName());
         holder.textViewEmail.setText(listLaundry.get(position).getEmail());
         holder.textViewAlamat.setText(listLaundry.get(position).getAlamat());
@@ -77,7 +73,7 @@ public class LaundryRecyclerAdapter extends ArrayAdapter<Laundry> {
 
     @Override
     public int getItemCount() {
-        Log.v(LaundryRecyclerAdapter.class.getSimpleName(),""+listLaundry.size());
+        Log.v(LaundryAdapter.class.getSimpleName(),""+listLaundry.size());
         return listLaundry.size();
     }
 

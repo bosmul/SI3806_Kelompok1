@@ -207,16 +207,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 // Setting the position of the marker
                 options.position(latLng);
+                marker = mMap.addMarker(new MarkerOptions()
+                        .position(point)
+                        .title("Set Destination")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
+                marker.showInfoWindow();
 
                 if (markerPoints.size() == 1) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
                 } else if (markerPoints.size() == 2) {
                     options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                }
-
-                if (markerPoints.size() >= 2) {
                     LatLng origin = (LatLng) markerPoints.get(0);
                     LatLng dest = (LatLng) markerPoints.get(1);
+
 
                     // Getting URL to the Google Directions API
                     String url = getDirectionsUrl(origin, dest);
@@ -225,6 +228,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     // Start downloading json data from Google Directions API
                     downloadTask.execute(url);
+                }else if (markerPoints.size() > 2) {
+                    marker.remove();
                 }
 
                 try {
@@ -253,11 +258,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
                 //place marker where user just clicked
-                marker = mMap.addMarker(new MarkerOptions()
-                        .position(point)
-                        .title("Set Destination")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
-                marker.showInfoWindow();
+
 
             }
         });

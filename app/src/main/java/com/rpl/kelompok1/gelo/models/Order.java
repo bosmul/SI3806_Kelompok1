@@ -5,18 +5,21 @@ package com.rpl.kelompok1.gelo.models;
  */
 
 public class Order {
-    public String idOrder, idLaundry, idUser, alamatLaundry, alamatUser, tipe, harga, status;
+    public String idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, tipe, berat, harga, status;
 
     public Order() {
     }
 
-    public Order(String idOrder, String idLaundry, String idUser, String alamatLaundry, String alamatUser, String tipe, String harga, String status) {
+    public Order(String idOrder, String idLaundry, String idUser, String namaUser, String namaLaundry, String alamatLaundry, String alamatUser, String tipe, String berat, String harga, String status) {
         this.idOrder = idOrder;
         this.idLaundry = idLaundry;
         this.idUser = idUser;
+        this.namaUser = namaUser;
+        this.namaLaundry = namaLaundry;
         this.alamatLaundry = alamatLaundry;
         this.alamatUser = alamatUser;
         this.tipe = tipe;
+        this.berat = berat;
         this.harga = harga;
         this.status = status;
     }
@@ -45,6 +48,22 @@ public class Order {
         this.idUser = idUser;
     }
 
+    public String getNamaUser() {
+        return namaUser;
+    }
+
+    public void setNamaUser(String namaUser) {
+        this.namaUser = namaUser;
+    }
+
+    public String getNamaLaundry() {
+        return namaLaundry;
+    }
+
+    public void setNamaLaundry(String namaLaundry) {
+        this.namaLaundry = namaLaundry;
+    }
+
     public String getAlamatLaundry() {
         return alamatLaundry;
     }
@@ -67,6 +86,14 @@ public class Order {
 
     public void setTipe(String tipe) {
         this.tipe = tipe;
+    }
+
+    public String getBerat() {
+        return berat;
+    }
+
+    public void setBerat(String berat) {
+        this.berat = berat;
     }
 
     public String getHarga() {

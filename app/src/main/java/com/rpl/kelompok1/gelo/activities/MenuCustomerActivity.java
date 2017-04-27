@@ -38,10 +38,6 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
             startActivity(new Intent(MenuCustomerActivity.this, LaundryListActivity.class));
         }
         if (view == btnPesanKeluhan) {
-            startActivity(new Intent(MenuCustomerActivity.this, PesanKeluhanActivity.class));
+            startActivity(new Intent(MenuCustomerActivity.this, OrderListActivity.class));
         }
-
-
-
-
     }}
