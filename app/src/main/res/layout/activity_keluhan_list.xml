@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -6,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.rpl.kelompok1.gelo.activities.LaundryListActivity"
-    android:background="@drawable/gelomenu">
+    tools:context="com.rpl.kelompok1.gelo.activities.KeluhanListActivity">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -19,7 +17,7 @@
         <android.support.v7.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DAFTAR LAUNDRY"
+            android:text="DAFTAR KELUHAN"
             android:textSize="20sp" />
 
         <android.support.v7.widget.AppCompatTextView
@@ -35,8 +33,17 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingLeft="16dp"
+        android:paddingTop="5dp"
+        android:text="@string/text_accounts"
+        android:textColor="@android:color/black" />
+
     <ListView
-        android:id="@+id/listViewLaundry"
+        android:id="@+id/listViewKeluhan"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

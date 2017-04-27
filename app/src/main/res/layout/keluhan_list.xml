@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    card_view:cardCornerRadius="4dp"
-  >
-
+    card_view:cardCornerRadius="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/gelomenu"
         android:padding="16dp">
 
         <LinearLayout
@@ -23,15 +21,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/hint_name"
-                android:textColor="@color/wallet_holo_blue_light" />
+                android:text="Id Keluhan"
+                android:textColor="@color/colorTextHint" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/textViewName"
+                android:id="@+id/textViewKeluhan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/hint_name"
+                android:text="Id Keluhan"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
@@ -45,15 +43,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="@string/hint_email"
-                android:textColor="@color/wallet_holo_blue_light" />
+                android:text="Nama User"
+                android:textColor="@color/colorTextHint" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/textViewEmail"
+                android:id="@+id/textViewNama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/hint_email"
+                android:text="Nama User"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
@@ -67,15 +65,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Alamat"
-                android:textColor="@color/wallet_holo_blue_light" />
+                android:text="Nomor Telepon"
+                android:textColor="@color/colorTextHint" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/textViewAlamat"
+                android:id="@+id/textViewNomor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Alamat"
+                android:text="Nomor Telepon"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 
@@ -89,15 +87,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
-                android:text="Telepon"
-                android:textColor="@color/wallet_holo_blue_light" />
+                android:text="Isi"
+                android:textColor="@color/colorTextHint" />
 
             <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/textViewTelepon"
+                android:id="@+id/textViewIsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Telepon"
+                android:text="Isi"
                 android:textColor="@android:color/darker_gray" />
         </LinearLayout>
 

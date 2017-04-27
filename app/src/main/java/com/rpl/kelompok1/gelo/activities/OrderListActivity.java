@@ -91,25 +91,5 @@ public class OrderListActivity extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance().getReference("order");
         user = firebaseAuth.getCurrentUser();
         query =  mDatabase.orderByChild("idUser").equalTo(user.getUid());
-
-        /*listViewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //getting the selected artist
-                Order order = listOrder.get(i);
-
-                //creating an intent
-                Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
-
-                //putting artist name and id to intent
-                intent.putExtra(ARTIST_ID, artist.getArtistId());
-                intent.putExtra(ARTIST_NAME, artist.getArtistName());
-
-                //starting the activity with intent
-                startActivity(intent);
-            }
-        });*/
-
-
     }
 }

@@ -5,12 +5,14 @@ package com.rpl.kelompok1.gelo.models;
  */
 
 public class Order {
-    public String idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, tipe, berat, harga, status;
+    public String idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, nomorUser, nomorLaundry, tipe, berat, harga, status, parfurm;
 
     public Order() {
     }
 
-    public Order(String idOrder, String idLaundry, String idUser, String namaUser, String namaLaundry, String alamatLaundry, String alamatUser, String tipe, String berat, String harga, String status) {
+    public Order(String idOrder, String idLaundry, String idUser, String namaUser, String namaLaundry,
+                 String alamatLaundry, String alamatUser, String nomorUser, String nomorLaundry, String tipe, String berat, String harga, String status,
+                 String parfurm) {
         this.idOrder = idOrder;
         this.idLaundry = idLaundry;
         this.idUser = idUser;
@@ -18,10 +20,13 @@ public class Order {
         this.namaLaundry = namaLaundry;
         this.alamatLaundry = alamatLaundry;
         this.alamatUser = alamatUser;
+        this.nomorUser = nomorUser;
+        this.nomorLaundry = nomorLaundry;
         this.tipe = tipe;
         this.berat = berat;
         this.harga = harga;
         this.status = status;
+        this.parfurm = parfurm;
     }
 
     public String getIdOrder() {
@@ -80,6 +85,22 @@ public class Order {
         this.alamatUser = alamatUser;
     }
 
+    public String getNomorUser() {
+        return nomorUser;
+    }
+
+    public void setNomorUser(String nomorUser) {
+        this.nomorUser = nomorUser;
+    }
+
+    public String getNomorLaundry() {
+        return nomorLaundry;
+    }
+
+    public void setNomorLaundry(String nomorLaundry) {
+        this.nomorLaundry = nomorLaundry;
+    }
+
     public String getTipe() {
         return tipe;
     }
@@ -110,5 +131,13 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getParfurm() {
+        return parfurm;
+    }
+
+    public void setParfurm(String parfurm) {
+        this.parfurm = parfurm;
     }
 }

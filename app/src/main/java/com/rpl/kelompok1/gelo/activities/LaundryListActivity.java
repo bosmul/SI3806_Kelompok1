@@ -94,10 +94,12 @@ public class LaundryListActivity extends AppCompatActivity {
                 String alamat = laundry.getAlamat();
                 String id = laundry.getId();
                 String nama = laundry.getName();
+                String nomor = laundry.getTelepon();
                 Intent setalamat = new Intent(LaundryListActivity.this, RegisterActivity.class);
                 setalamat.putExtra("alamat", alamat);
                 setalamat.putExtra("id", id);
                 setalamat.putExtra("nama", nama);
+                setalamat.putExtra("nomor", nomor);
                 setResult(RESULT_OK, setalamat);
                 Toast.makeText(LaundryListActivity.this, "Info window clicked", Toast.LENGTH_SHORT).show();
                 finish();

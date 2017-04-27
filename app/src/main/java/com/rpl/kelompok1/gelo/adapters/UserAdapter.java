@@ -2,33 +2,33 @@ package com.rpl.kelompok1.gelo.adapters;
 
 import android.app.Activity;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import com.rpl.kelompok1.gelo.R;
-import com.rpl.kelompok1.gelo.models.Laundry;
+import com.rpl.kelompok1.gelo.models.User;
+import com.rpl.kelompok1.gelo.models.User;
 
 import java.util.List;
 
 /**
- * Created by Lenovo on 08/04/2017.
+ * Created by Lenovo on 07/04/2017.
  */
 
-public class LaundryAdapter extends ArrayAdapter<Laundry> {
-    private List<Laundry> listLaundry;
+public class UserAdapter extends ArrayAdapter<User> {
+    private List<User> listUser;
     private Activity context;
     public AppCompatTextView textViewName;
     public AppCompatTextView textViewEmail;
-    public AppCompatTextView textViewAlamat;
     public AppCompatTextView textViewTelepon;
-
-
-    public LaundryAdapter(Activity context, List<Laundry> listLaundry) {
-        super(context, R.layout.item_list, listLaundry);
+    public UserAdapter(Activity context, List<User> listUser) {
+        super(context, R.layout.item_list, listUser);
         this.context = context;
-        this.listLaundry = listLaundry;
+        this.listUser = listUser;
     }
 
     @Override
@@ -38,14 +38,12 @@ public class LaundryAdapter extends ArrayAdapter<Laundry> {
 
         textViewName = (AppCompatTextView) view.findViewById(R.id.textViewName);
         textViewEmail = (AppCompatTextView) view.findViewById(R.id.textViewEmail);
-        textViewAlamat = (AppCompatTextView) view.findViewById(R.id.textViewAlamat);
         textViewTelepon = (AppCompatTextView) view.findViewById(R.id.textViewTelepon);
 
-        //Laundry laundry = listLaundry.get(position);
-        textViewName.setText(listLaundry.get(position).getName());
-        textViewEmail.setText(listLaundry.get(position).getEmail());
-        textViewAlamat.setText(listLaundry.get(position).getAlamat());
-        textViewTelepon.setText(listLaundry.get(position).getTelepon());
+        //User user = listUser.get(position);
+        textViewName.setText(listUser.get(position).getName());
+        textViewEmail.setText(listUser.get(position).getEmail());
+        textViewTelepon.setText(listUser.get(position).getTelepon());
 
         return view;
     }

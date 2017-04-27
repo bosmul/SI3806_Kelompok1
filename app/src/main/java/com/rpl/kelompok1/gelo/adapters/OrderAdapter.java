@@ -26,6 +26,8 @@ public class OrderAdapter extends ArrayAdapter<Order> {
     public AppCompatTextView textViewStatus;
     public AppCompatTextView textViewNama;
     public AppCompatTextView textViewBerat;
+    public AppCompatTextView textViewNomor;
+
 
     public OrderAdapter(Activity context, List<Order> listOrder) {
         super(context, R.layout.order_list, listOrder);
@@ -45,6 +47,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         textViewStatus = (AppCompatTextView) view.findViewById(R.id.textViewStatus);
         textViewNama = (AppCompatTextView) view.findViewById(R.id.textViewNama);
         textViewBerat = (AppCompatTextView) view.findViewById(R.id.textViewBerat);
+        textViewNomor = (AppCompatTextView) view.findViewById(R.id.textViewNomor);
 
         //Laundry laundry = listLaundry.get(position);
         textViewOrder.setText(listOrder.get(position).getIdOrder());
@@ -54,6 +57,7 @@ public class OrderAdapter extends ArrayAdapter<Order> {
         textViewStatus.setText(listOrder.get(position).getStatus());
         textViewNama.setText(listOrder.get(position).getNamaLaundry());
         textViewBerat.setText(listOrder.get(position).getBerat());
+        textViewNomor.setText(listOrder.get(position).getNomorUser());
 
         return view;
     }
