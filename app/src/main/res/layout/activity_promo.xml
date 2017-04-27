@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/gelomenu"
         tools:context="com.rpl.kelompok1.gelo.activities.LoginActivity"
         android:weightSum="1">
 
@@ -19,7 +19,7 @@
             android:layout_margin="20dp"
             android:text="PROMO"
             android:textSize="30sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/wallet_holo_blue_light"/>
 
 
     <LinearLayout
@@ -31,8 +31,10 @@
         <Button
             android:id="@+id/btnback"
             style="@style/btnStyleOrange"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@color/wallet_holo_blue_light"
             android:layout_margin="10dp"
             android:onClick="Back"
             android:text="Back" />
@@ -40,9 +42,11 @@
         <Button
             android:id="@+id/btnmenu"
             style="@style/btnStyleOrange"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:background="@color/wallet_holo_blue_light"
             android:onClick="MENU"
             android:text="MENU" />
 

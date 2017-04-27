@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.rpl.kelompok1.gelo.activities.LaundryListActivity">
+    tools:context="com.rpl.kelompok1.gelo.activities.LaundryListActivity"
+    android:background="@drawable/gelomenu">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
