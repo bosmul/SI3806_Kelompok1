@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -18,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rpl.kelompok1.gelo.R;
-import com.rpl.kelompok1.gelo.adapters.LaundryRecyclerAdapter;
+import com.rpl.kelompok1.gelo.adapters.LaundryAdapter;
 import com.rpl.kelompok1.gelo.models.Laundry;
 
 import java.util.ArrayList;
@@ -29,7 +26,7 @@ public class LaundryListActivity extends AppCompatActivity {
     private AppCompatTextView textViewName;
     private ListView listViewLaundry;
     private List<Laundry> listLaundry;
-    private LaundryRecyclerAdapter mLaundryRecyclerAdapter;
+    private LaundryAdapter mLaundryAdapter;
     private DatabaseReference mDatabase;
 
     @Override
@@ -50,9 +47,9 @@ public class LaundryListActivity extends AppCompatActivity {
                     listLaundry.add(laundry);
                 }
                 //creating adapter
-                mLaundryRecyclerAdapter = new LaundryRecyclerAdapter(LaundryListActivity.this, listLaundry);
+                mLaundryAdapter = new LaundryAdapter(LaundryListActivity.this, listLaundry);
                 //attaching adapter to the listview
-                listViewLaundry.setAdapter(mLaundryRecyclerAdapter);
+                listViewLaundry.setAdapter(mLaundryAdapter);
             }
 
             @Override
@@ -96,9 +93,13 @@ public class LaundryListActivity extends AppCompatActivity {
                 //putting artist name and id to intent
                 String alamat = laundry.getAlamat();
                 String id = laundry.getId();
+                String nama = laundry.getName();
+                String nomor = laundry.getTelepon();
                 Intent setalamat = new Intent(LaundryListActivity.this, RegisterActivity.class);
                 setalamat.putExtra("alamat", alamat);
                 setalamat.putExtra("id", id);
+                setalamat.putExtra("nama", nama);
+                setalamat.putExtra("nomor", nomor);
                 setResult(RESULT_OK, setalamat);
                 Toast.makeText(LaundryListActivity.this, "Info window clicked", Toast.LENGTH_SHORT).show();
                 finish();

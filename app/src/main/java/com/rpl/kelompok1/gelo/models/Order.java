@@ -5,20 +5,28 @@ package com.rpl.kelompok1.gelo.models;
  */
 
 public class Order {
-    public String idOrder, idLaundry, idUser, alamatLaundry, alamatUser, tipe, harga, status;
+    public String idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, nomorUser, nomorLaundry, tipe, berat, harga, status, parfurm;
 
     public Order() {
     }
 
-    public Order(String idOrder, String idLaundry, String idUser, String alamatLaundry, String alamatUser, String tipe, String harga, String status) {
+    public Order(String idOrder, String idLaundry, String idUser, String namaUser, String namaLaundry,
+                 String alamatLaundry, String alamatUser, String nomorUser, String nomorLaundry, String tipe, String berat, String harga, String status,
+                 String parfurm) {
         this.idOrder = idOrder;
         this.idLaundry = idLaundry;
         this.idUser = idUser;
+        this.namaUser = namaUser;
+        this.namaLaundry = namaLaundry;
         this.alamatLaundry = alamatLaundry;
         this.alamatUser = alamatUser;
+        this.nomorUser = nomorUser;
+        this.nomorLaundry = nomorLaundry;
         this.tipe = tipe;
+        this.berat = berat;
         this.harga = harga;
         this.status = status;
+        this.parfurm = parfurm;
     }
 
     public String getIdOrder() {
@@ -45,6 +53,22 @@ public class Order {
         this.idUser = idUser;
     }
 
+    public String getNamaUser() {
+        return namaUser;
+    }
+
+    public void setNamaUser(String namaUser) {
+        this.namaUser = namaUser;
+    }
+
+    public String getNamaLaundry() {
+        return namaLaundry;
+    }
+
+    public void setNamaLaundry(String namaLaundry) {
+        this.namaLaundry = namaLaundry;
+    }
+
     public String getAlamatLaundry() {
         return alamatLaundry;
     }
@@ -61,12 +85,36 @@ public class Order {
         this.alamatUser = alamatUser;
     }
 
+    public String getNomorUser() {
+        return nomorUser;
+    }
+
+    public void setNomorUser(String nomorUser) {
+        this.nomorUser = nomorUser;
+    }
+
+    public String getNomorLaundry() {
+        return nomorLaundry;
+    }
+
+    public void setNomorLaundry(String nomorLaundry) {
+        this.nomorLaundry = nomorLaundry;
+    }
+
     public String getTipe() {
         return tipe;
     }
 
     public void setTipe(String tipe) {
         this.tipe = tipe;
+    }
+
+    public String getBerat() {
+        return berat;
+    }
+
+    public void setBerat(String berat) {
+        this.berat = berat;
     }
 
     public String getHarga() {
@@ -83,5 +131,13 @@ public class Order {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getParfurm() {
+        return parfurm;
+    }
+
+    public void setParfurm(String parfurm) {
+        this.parfurm = parfurm;
     }
 }

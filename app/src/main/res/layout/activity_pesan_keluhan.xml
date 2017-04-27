@@ -23,32 +23,26 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
-                android:text="Setatus Pengguna Aplikasi"
+                android:text="User"
+                android:id="@+id/textViewUser"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
 
-            <CheckBox
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/etCustomer"
-                android:hint="Customer"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="20dp"
+                android:text="Pilih Laundry"
+                android:id="@+id/textViewLaundry"
                 android:textSize="20sp"
-                android:textColorHint="@color/white"
-                android:layout_margin="10dp"/>
-
-            <CheckBox
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/etPemilikJasaLaundry"
-                android:hint="Pemilik Jasa Laundry"
-                android:textSize="20sp"
-                android:textColorHint="@color/white"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -60,7 +54,7 @@
                 android:textColor="@color/white"/>
 
             <EditText
-                android:id="@+id/etPass"
+                android:id="@+id/editeTextKeluhan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Tulis Keluhan"
@@ -73,7 +67,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <Button
-                android:id="@+id/btnReg"
+                android:id="@+id/btnKirim"
                 style="@style/btnStyleOrange"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -81,18 +75,7 @@
                 android:layout_gravity="center"
                 android:background="@color/wallet_holo_blue_light"
                 android:layout_margin="10dp"
-                android:onClick="Submit"/>
-            <Button
-                android:id="@+id/btnback"
-                style="@style/btnStyleOrange"
-                android:layout_width="55dp"
-                android:layout_height="30dp"
-                android:layout_gravity="left"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/back"
-                android:onClick="Back" />
-
+                />
 
         </LinearLayout>
     </LinearLayout>

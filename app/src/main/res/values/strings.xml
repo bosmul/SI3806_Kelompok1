@@ -29,4 +29,10 @@
         <item>Normal</item>
         <item>1 hari jadi</item>
     </string-array>
+    <array name="status_laundry">
+        <item name="dijemput">Dijemput</item>
+        <item name="diproses">Diproses</item>
+        <item name="sudah jadi">Sudah Jadi</item>
+        <item name="diantar">Diantar</item>
+    </array>
 </resources>
