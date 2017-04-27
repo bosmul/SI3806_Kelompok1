@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_menu_customer"
     android:layout_width="match_parent"
@@ -9,72 +9,85 @@
     android:background="@drawable/gelomenu">
     tools:context="com.rpl.kelompok1.gelo.Activities.MenuCustomerActivity">
 
-
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="27dp"
+        android:background="@drawable/logo1"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Menu Customer "
+        android:text="Pick A Service "
         android:textSize="30sp"
-        android:padding="20dp"
-        android:textColor="@color/wallet_holo_blue_light"
-        android:layout_marginTop="38dp"
+
+        android:textColor="@color/Like"
+        android:layout_marginTop="1dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btnInformasiTempatLaundry" />
+        android:layout_alignStart="@+id/btnInformasiTempatLaundry"
+        android:id="@+id/textView" />
 
-    <Button
-        android:id="@+id/btnPromo"
-        style="@style/btnStyleOrange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Promo"
-        android:layout_marginRight="40dp"
-        android:layout_marginLeft="40dp"
-
-        android:onClick="onClick"
-        android:layout_above="@+id/btnPesanKeluhan"
-        android:layout_alignStart="@+id/btnPesanKeluhan"
-        android:layout_marginBottom="42dp" />
-
-
-
-    <Button
-        android:id="@+id/btnPesanKeluhan"
-        style="@style/btnStyleOrange"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Pesan Keluhan"
-        android:layout_marginRight="100dp"
-        android:layout_marginLeft="100dp"
+        android:layout_height="match_parent">
 
-        android:onClick="onClick"
-        android:layout_marginBottom="32dp"
-        android:layout_alignParentBottom="true" />
+        <Button
+            android:id="@+id/btnOrder"
+            style="@style/btnStyleOrange"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignStart="@+id/btnPeta"
+            android:layout_alignTop="@+id/btnInformasiTempatLaundry"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
 
-    <Button
-        android:id="@+id/btnInformasiTempatLaundry"
-        style="@style/btnStyleOrange"
-        android:layout_width="333dp"
-        android:layout_height="59dp"
-        android:text="Informasi Tempat Laundry"
-        android:layout_marginRight="80dp"
-        android:layout_marginLeft="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/order"
+            android:onClick="onClick"/>
 
-        android:onClick="onClick"
-        android:layout_marginBottom="36dp"
-        android:layout_above="@+id/btnPromo"
-        android:layout_centerHorizontal="true" />
 
-    <Button
-        android:id="@+id/btnPeta"
-        style="@style/btnStyleOrange"
-        android:layout_width="333dp"
-        android:layout_height="59dp"
-        android:text="Maps"
-        android:layout_marginRight="60dp"
-        android:layout_marginLeft="60dp"
+        <Button
+            android:id="@+id/btnPesanKeluhan"
+            style="@style/btnStyleOrange"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignStart="@+id/btnInformasiTempatLaundry"
+            android:layout_below="@+id/btnOrder"
 
-        android:onClick="onClick"
-        android:layout_above="@+id/btnInformasiTempatLaundry"
-        android:layout_marginBottom="33dp" />
-</RelativeLayout>
+            android:layout_gravity="bottom"
+            android:layout_marginTop="22dp"
+            android:background="@drawable/keluhan"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/btnInformasiTempatLaundry"
+            style="@style/btnStyleOrange"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="37dp"
+            android:layout_toEndOf="@+id/btnOrder"
+            android:background="@drawable/londre"
+            android:onClick="onClick" />
+
+        <Button
+            android:id="@+id/btnPeta"
+            style="@style/btnStyleOrange"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/btnOrder"
+
+
+            android:layout_gravity="bottom"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="11dp"
+            android:background="@drawable/maps"
+            android:onClick="onClick" />
+    </RelativeLayout>
+</LinearLayout>

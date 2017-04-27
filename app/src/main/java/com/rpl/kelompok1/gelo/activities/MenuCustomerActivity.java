@@ -9,7 +9,7 @@ import android.widget.Button;
 import com.rpl.kelompok1.gelo.R;
 
 public class MenuCustomerActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button btnPromo;
+    private Button btnOrder;
     private Button btnPeta;
     private Button btnInformasiTempatLaundry;
     private Button btnPesanKeluhan;
@@ -21,15 +21,15 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_menu_customer);
-        btnPromo = (Button) findViewById(R.id.btnPromo);
+        btnOrder = (Button) findViewById(R.id.btnOrder);
         btnPeta = (Button) findViewById(R.id.btnPeta);
         btnInformasiTempatLaundry=(Button) findViewById(R.id.btnInformasiTempatLaundry);
         btnPesanKeluhan = (Button) findViewById(R.id.btnPesanKeluhan);
     }
 
     public void onClick(View view) {
-        if (view == btnPromo) {
-            startActivity(new Intent(MenuCustomerActivity.this, OrderActivity.class));
+        if (view == btnOrder) {
+            startActivity(new Intent(MenuCustomerActivity.this, MapsActivity.class));
         }
         if (view == btnPeta) {
             startActivity(new Intent(MenuCustomerActivity.this, MapsActivity.class));

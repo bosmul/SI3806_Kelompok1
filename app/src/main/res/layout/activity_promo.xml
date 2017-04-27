@@ -29,26 +29,26 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btnback"
-            style="@style/btnStyleOrange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/wallet_holo_blue_light"
-            android:layout_margin="10dp"
-            android:onClick="Back"
-            android:text="Back" />
-
-        <Button
             android:id="@+id/btnmenu"
             style="@style/btnStyleOrange"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
             android:layout_gravity="center"
+            android:layout_margin="10dp"
             android:background="@color/wallet_holo_blue_light"
             android:onClick="MENU"
             android:text="MENU" />
+
+        <Button
+            android:id="@+id/btnback"
+            style="@style/btnStyleOrange"
+            android:layout_width="55dp"
+            android:layout_height="30dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="315dp"
+            android:background="@drawable/back"
+            android:onClick="Back" />
 
     </LinearLayout>
 
