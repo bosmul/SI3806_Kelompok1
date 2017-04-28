@@ -61,7 +61,7 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
             startActivity(new Intent(MenuCustomerActivity.this, UserListActivity.class));
         }
         if (view == btnSignOut) {
-           firebaseAuth.signOut();
             startActivity(new Intent(MenuCustomerActivity.this, LoginActivity.class));
+            firebaseAuth.signOut();
         }
     }}
