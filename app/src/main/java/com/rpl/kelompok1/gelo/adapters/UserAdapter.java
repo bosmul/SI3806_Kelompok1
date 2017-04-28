@@ -34,7 +34,7 @@ public class UserAdapter extends ArrayAdapter<User> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_list, null, true);
+        View view = inflater.inflate(R.layout.item_list2, null, true);
 
         textViewName = (AppCompatTextView) view.findViewById(R.id.textViewName);
         textViewEmail = (AppCompatTextView) view.findViewById(R.id.textViewEmail);

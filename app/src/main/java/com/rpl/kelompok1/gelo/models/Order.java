@@ -1,12 +1,13 @@
 package com.rpl.kelompok1.gelo.models;
 
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by Lenovo on 25/04/2017.
  */
 
 public class Order {
     public String idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser, nomorUser, nomorLaundry, tipe, berat, harga, status, parfurm;
-
     public Order() {
     }
 

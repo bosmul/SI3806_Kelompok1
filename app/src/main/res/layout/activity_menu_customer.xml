@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <Button
             android:id="@+id/btnOrder"
             style="@style/btnStyleOrange"
@@ -105,34 +106,22 @@
             android:onClick="onClick"
             android:background="@drawable/signouto" />
 
+        <TextView
+            android:id="@+id/textViewUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            android:onClick="onClick"
+            android:text="Update Profile"
+            android:textColor="@color/Like"
+            android:textSize="30sp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
 
     </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Pick A Service "
-        android:textSize="30sp"
 
-        android:textColor="@color/Like"
-        android:layout_marginTop="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btnInformasiTempatLaundry"
-        android:id="@+id/textView" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="Update Profile"
-        android:textSize="30sp"
-
-        android:textColor="@color/Like"
-        android:layout_marginTop="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/btnInformasiTempatLaundry"
-        android:id="@+id/textViewUpdate"
-        android:onClick="onClick" />
 
 </LinearLayout>
