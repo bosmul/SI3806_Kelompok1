@@ -28,10 +28,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_margin="20dp"
+                android:layout_margin="20dp"android:background="@color/wallet_holo_blue_light"
                 android:text="User"
-                android:id="@+id/textViewUser"
-                android:textSize="20sp"
+               android:textSize="20sp"
                 android:textColor="@color/white"/>
 
             <TextView
@@ -42,7 +41,8 @@
                 android:text="Pilih Laundry"
                 android:id="@+id/textViewLaundry"
                 android:textSize="20sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,7 +51,9 @@
                 android:layout_margin="20dp"
                 android:text="Keluhan"
                 android:textSize="20sp"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"
+                />
 
             <EditText
                 android:id="@+id/editeTextKeluhan"
