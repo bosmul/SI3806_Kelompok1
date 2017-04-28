@@ -163,12 +163,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+
         Intent setalamat = new Intent(MapsActivity.this, RegisterActivity.class);
         setalamat.putExtra("alamat", alamat);
         setResult(RESULT_OK, setalamat);
         finish();
-        Toast.makeText(this, "Info window clicked",
-                Toast.LENGTH_SHORT).show();
     }
 
     @Override

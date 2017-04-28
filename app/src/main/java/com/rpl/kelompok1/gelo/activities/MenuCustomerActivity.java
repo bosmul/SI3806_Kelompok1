@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.rpl.kelompok1.gelo.R;
 
+import java.io.IOException;
+
 public class MenuCustomerActivity extends AppCompatActivity implements View.OnClickListener {
     private Button btnOrder;
     private Button btnPeta;
@@ -59,6 +61,7 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
             startActivity(new Intent(MenuCustomerActivity.this, UserListActivity.class));
         }
         if (view == btnSignOut) {
-            firebaseAuth.signOut();
+           firebaseAuth.signOut();
+            startActivity(new Intent(MenuCustomerActivity.this, LoginActivity.class));
         }
     }}

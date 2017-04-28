@@ -42,6 +42,7 @@ public class UserListActivity extends AppCompatActivity {
     private UserAdapter mUserAdapter;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
+    String nama, telepon;
 
     FirebaseUser user;
     Query query;
@@ -62,6 +63,8 @@ public class UserListActivity extends AppCompatActivity {
                     User user = postSnapshot.getValue(User.class);
                     //adding artist to the list
                     listUser.add(user);
+                    nama = user.getName();
+                    telepon = user.getTelepon();
                 }
                 //creating adapter
                 mUserAdapter = new UserAdapter(UserListActivity.this, listUser);
@@ -132,6 +135,9 @@ public class UserListActivity extends AppCompatActivity {
 
         final EditText editTextNama = (EditText) dialogView.findViewById(R.id.editTextNama);
         final EditText editTextTelepon = (EditText) dialogView.findViewById(R.id.editTextTelepon);
+
+        editTextNama.setText(nama);
+        editTextTelepon.setText(telepon);
 
         final Button buttonUpdate = (Button) dialogView.findViewById(R.id.buttonUpdate);
 
