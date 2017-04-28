@@ -85,6 +85,7 @@ public class KeluhanListActivity extends AppCompatActivity {
                 //getting the selected artist
                 Keluhan keluhan = listKeluhan.get(i);
 
+
                 //creating an intent
                 Intent intent = new Intent(getApplicationContext(), LihatKeluhanActivity.class);
                 String namaUser = keluhan.getNamaUser();
