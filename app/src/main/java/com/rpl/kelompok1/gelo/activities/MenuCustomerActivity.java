@@ -23,9 +23,6 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
     private TextView update;
     private FirebaseAuth firebaseAuth;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +59,5 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
         }
         if (view == btnSignOut) {
             startActivity(new Intent(MenuCustomerActivity.this, LoginActivity.class));
-            firebaseAuth.signOut();
         }
     }}
