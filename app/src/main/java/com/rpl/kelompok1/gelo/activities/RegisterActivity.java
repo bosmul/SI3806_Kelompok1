@@ -13,6 +13,8 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -32,8 +34,6 @@ import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private NestedScrollView nestedScrollView;
-
     private TextInputLayout textInputLayoutName;
     private TextInputLayout textInputLayoutEmail;
     private TextInputLayout textInputLayoutPassword;
@@ -46,8 +46,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private TextInputEditText textInputEditTextConfirmPassword;
     private TextInputEditText textInputEditTextTelepon;
 
-    private AppCompatButton appCompatButtonRegister;
-    private AppCompatTextView appCompatTextViewLoginLink;
+    private Button appCompatButtonRegister;
+    private TextView appCompatTextViewLoginLink;
 
     private ProgressDialog progressDialog;
 
@@ -92,8 +92,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initViews() {
-        nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
-
         textInputLayoutName = (TextInputLayout) findViewById(R.id.textInputLayoutName);
         textInputLayoutEmail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
         textInputLayoutPassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
@@ -106,9 +104,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         textInputEditTextConfirmPassword = (TextInputEditText) findViewById(R.id.textInputEditTextConfirmPassword);
         textInputEditTextTelepon = (TextInputEditText) findViewById(R.id.textInputEditTextTelepon);
 
-        appCompatButtonRegister = (AppCompatButton) findViewById(R.id.appCompatButtonRegister);
+        appCompatButtonRegister = (Button) findViewById(R.id.buttonRegister);
 
-        appCompatTextViewLoginLink = (AppCompatTextView) findViewById(R.id.appCompatTextViewLoginLink);
+        appCompatTextViewLoginLink = (TextView) findViewById(R.id.textViewLoginLink);
     }
 
     private void initListeners() {
@@ -128,10 +126,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.appCompatButtonRegister:
+            case R.id.buttonRegister:
                 registerUser();
                 break;
-            case R.id.appCompatTextViewLoginLink:
+            case R.id.textViewLoginLink:
                 finish();
                 break;
         }
@@ -167,17 +165,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         progressDialog.setMessage("Registering Please Wait...");
         progressDialog.show();
 
-        //creating a new user
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            //display some message here
                             Toast.makeText(RegisterActivity.this,"Successfully registered",Toast.LENGTH_LONG).show();
                             onAuthSuccess(task.getResult().getUser());
                         }else{
-                            //display some message here
                             Toast.makeText(RegisterActivity.this,"Registration Error", Toast.LENGTH_LONG).show();
                         }
                         progressDialog.dismiss();

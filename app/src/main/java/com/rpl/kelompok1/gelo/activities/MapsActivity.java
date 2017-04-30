@@ -163,7 +163,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-
         Intent setalamat = new Intent(MapsActivity.this, RegisterActivity.class);
         setalamat.putExtra("alamat", alamat);
         setResult(RESULT_OK, setalamat);
@@ -181,8 +180,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .target(start)
                 .zoom(16)
                 .build();
-        //mMap.addMarker(new MarkerOptions().position(start));
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cam));
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         } else {
@@ -219,7 +218,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     LatLng origin = (LatLng) markerPoints.get(0);
                     LatLng dest = (LatLng) markerPoints.get(1);
 
-
                     // Getting URL to the Google Directions API
                     String url = getDirectionsUrl(origin, dest);
 
@@ -248,17 +246,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Toast.makeText(MapsActivity.this, latLng.toString(), Toast.LENGTH_LONG).show();
                     mAddress.setText(sb.toString());
                 }
-
-                //remove previously placed Marker
-                /*if (marker != null) {
-                    marker.remove();
-                }*/
-
-
-
-                //place marker where user just clicked
-
-
             }
         });
     }
@@ -329,7 +316,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private class ParserTask extends AsyncTask<String, Integer, List<List<HashMap<String, String>>>> {
-
         // Parsing the data in non-ui thread
         @Override
         protected List<List<HashMap<String, String>>> doInBackground(String... jsonData) {
@@ -401,7 +387,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Building the url to the web service
         String url = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters;
-
 
         return url;
     }

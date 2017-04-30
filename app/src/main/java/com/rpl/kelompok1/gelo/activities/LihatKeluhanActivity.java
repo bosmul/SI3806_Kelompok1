@@ -22,7 +22,6 @@ import java.util.List;
 
 public class LihatKeluhanActivity extends AppCompatActivity{
     TextView userTV, laundry, isiKeluhan, feedbackTV;
-    Button kirim;
     private List<Keluhan> listKeluhan;
     private List<User> listUser;
 
@@ -31,16 +30,14 @@ public class LihatKeluhanActivity extends AppCompatActivity{
     private DatabaseReference mDatabase;
     String idKeluhan, idLaundry,idUser, namaUser, namaLaundry,
             nomorUser, nomorLaundry, isi, feedback;
-    Query query;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_keluhan);
 
-        feedbackTV = (TextView) findViewById(R.id.textViewFeedback);
+        feedbackTV = (TextView) findViewById(R.id.textViewIsiFeedback);
 
-        userTV = (TextView) findViewById(R.id.textViewUser);
         laundry = (TextView) findViewById(R.id.textViewLaundry);
         isiKeluhan = (TextView) findViewById(R.id.textViewIsiKeluhan);
 

@@ -1,13 +1,9 @@
 package com.rpl.kelompok1.gelo.activities;
 
-import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,15 +24,13 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.adapters.UserAdapter;
-import com.rpl.kelompok1.gelo.adapters.UserAdapter;
-import com.rpl.kelompok1.gelo.models.User;
 import com.rpl.kelompok1.gelo.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserListActivity extends AppCompatActivity {
-    private AppCompatTextView textViewName;
+    private TextView textViewName;
     private ListView listViewUser;
     private List<User> listUser;
     private UserAdapter mUserAdapter;
@@ -44,8 +38,8 @@ public class UserListActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     String nama, telepon;
 
-    FirebaseUser user;
-    Query query;
+    private FirebaseUser user;
+    private Query query;
 
     @Override
     protected void onStart() {
@@ -53,22 +47,16 @@ public class UserListActivity extends AppCompatActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                //clearing the previous artist list
                 listUser.clear();
 
-                //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
                     User user = postSnapshot.getValue(User.class);
-                    //adding artist to the list
                     listUser.add(user);
                     nama = user.getName();
                     telepon = user.getTelepon();
                 }
-                //creating adapter
+
                 mUserAdapter = new UserAdapter(UserListActivity.this, listUser);
-                //attaching adapter to the listview
                 listViewUser.setAdapter(mUserAdapter);
             }
 
@@ -83,12 +71,20 @@ public class UserListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
-        initViews();
-        initObjects();
+        getSupportActionBar().hide();
+
+        textViewName = (AppCompatTextView) findViewById(R.id.textViewName);
+        textViewName.setText(nama);
+
+        listViewUser = (ListView) findViewById(R.id.listViewUser);
+
+        listUser = new ArrayList<>();
+
         mDatabase = FirebaseDatabase.getInstance().getReference("user");
+        query = mDatabase.orderByChild("id").equalTo(user.getUid());
+
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        query = mDatabase.orderByChild("id").equalTo(user.getUid());
 
         listViewUser.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -100,28 +96,11 @@ public class UserListActivity extends AppCompatActivity {
         });
     }
 
-    private void initViews() {
-        textViewName = (AppCompatTextView) findViewById(R.id.textViewName);
-        listViewUser = (ListView) findViewById(R.id.listViewUser);
-    }
-
-    /**
-     * This method is to initialize objects to be used
-     */
-    private void initObjects() {
-        listUser = new ArrayList<>();
-
-        String emailFromIntent = getIntent().getStringExtra("EMAIL");
-        textViewName.setText(emailFromIntent);
-    }
-
     private boolean updateUser(String id, String name, String email, String telepon) {
-        //getting the specified artist reference
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("user").child(id);
+        DatabaseReference mUser = mDatabase.child(id);
 
-        //updating artist
         User user= new User(id, name, email, telepon);
-        dR.setValue(user);
+        mUser.setValue(user);
         Toast.makeText(getApplicationContext(), "Order Updated", Toast.LENGTH_LONG).show();
         return true;
     }
@@ -151,6 +130,9 @@ public class UserListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String nama = editTextNama.getText().toString().trim();
                 String telepon = editTextTelepon.getText().toString().trim();
+                if(telepon.length() <10 || telepon.length() >14){
+                    Toast.makeText(UserListActivity.this,"Nomor telepon harus diantara 10 - 14 angka",Toast.LENGTH_LONG).show();
+                }
                 if (!TextUtils.isEmpty(nama)) {
                     updateUser(id, nama, email, telepon);
                     b.dismiss();

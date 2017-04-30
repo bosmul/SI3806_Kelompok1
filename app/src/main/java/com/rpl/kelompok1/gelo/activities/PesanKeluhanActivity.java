@@ -18,25 +18,22 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rpl.kelompok1.gelo.R;
 import com.rpl.kelompok1.gelo.models.Keluhan;
-import com.rpl.kelompok1.gelo.models.Order;
 import com.rpl.kelompok1.gelo.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PesanKeluhanActivity extends AppCompatActivity implements View.OnClickListener{
-    EditText keluhan;
-    TextView userTV, laundry;
-    Button kirim;
-    private List<Keluhan> listKeluhan;
+    private EditText keluhan;
+    private TextView laundry;
+    private Button kirim;
     private List<User> listUser;
-
-    FirebaseUser user;
+    private FirebaseUser user;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference mDatabase;
-    String idKeluhan, idLaundry,idUser, namaUser, namaLaundry,
+    private String idKeluhan, idLaundry,idUser, namaUser, namaLaundry,
             nomorUser, nomorLaundry, isi, feedback;
-    Query query;
+    private Query query;
 
     @Override
     protected void onStart() {
@@ -44,20 +41,14 @@ public class PesanKeluhanActivity extends AppCompatActivity implements View.OnCl
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //clearing the previous artist list
                 listUser.clear();
 
-                //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
                     User user = postSnapshot.getValue(User.class);
-                    //adding artist to the list
                     listUser.add(user);
 
                     namaUser = user.getName();
-
                     nomorUser = user.getTelepon();
-                    userTV.setText(namaUser);
                 }
             }
 
@@ -89,7 +80,6 @@ public class PesanKeluhanActivity extends AppCompatActivity implements View.OnCl
 
         keluhan = (EditText) findViewById(R.id.editeTextKeluhan);
 
-        userTV = (TextView) findViewById(R.id.textViewUser);
         laundry = (TextView) findViewById(R.id.textViewLaundry);
         laundry.setOnClickListener(this);
 
@@ -97,14 +87,12 @@ public class PesanKeluhanActivity extends AppCompatActivity implements View.OnCl
         kirim.setOnClickListener(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference("keluhan");
         user = firebaseAuth.getCurrentUser();
 
-        listKeluhan = new ArrayList<>();
-        listUser = new ArrayList<>();
-
-
+        mDatabase = FirebaseDatabase.getInstance().getReference("keluhan");
         query =  FirebaseDatabase.getInstance().getReference("user").orderByChild("id").equalTo(user.getUid());
+
+        listUser = new ArrayList<>();
     }
 
     @Override

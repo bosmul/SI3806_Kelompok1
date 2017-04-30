@@ -70,8 +70,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"/>
 
-            <android.support.v7.widget.AppCompatButton
-                android:id="@+id/appCompatButtonOrder"
+            <Button
+                android:id="@+id/ButtonOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
@@ -80,5 +80,7 @@
                 android:text="Order"
                 android:textColor="@color/white"/>
         </LinearLayout>
+
     </ScrollView>
+
 </LinearLayout>
