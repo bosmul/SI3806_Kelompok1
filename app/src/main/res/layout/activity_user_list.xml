@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,31 +8,27 @@
     android:background="@drawable/gelomenu"
     tools:context="com.rpl.kelompok1.gelo.activities.UserListActivity">
 
-    <android.support.v7.widget.LinearLayoutCompat
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="DAFTAR USER"
-            android:textSize="20sp" />
-
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/text_hello" />
+            android:text="@string/text_hello"
+            android:textSize="20sp"/>
 
-        <android.support.v7.widget.AppCompatTextView
+        <TextView
             android:id="@+id/textViewName"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="20sp"/>
 
-    </android.support.v7.widget.LinearLayoutCompat>
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listViewUser"

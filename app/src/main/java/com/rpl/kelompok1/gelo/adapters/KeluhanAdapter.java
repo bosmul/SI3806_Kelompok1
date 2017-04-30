@@ -13,7 +13,7 @@ import com.rpl.kelompok1.gelo.models.Keluhan;
 import java.util.List;
 
 /**
- * Created by Lenovo on 28/04/2017.
+ * Created by Alfian on 28/04/2017.
  */
 
 public class KeluhanAdapter extends ArrayAdapter<Keluhan> {
@@ -41,8 +41,6 @@ public class KeluhanAdapter extends ArrayAdapter<Keluhan> {
         textViewNama = (AppCompatTextView) view.findViewById(R.id.textViewNama);
         textViewNomor = (AppCompatTextView) view.findViewById(R.id.textViewNomor);
 
-
-        //Laundry laundry = listLaundry.get(position);
         textViewKeluhan.setText(listKeluhan.get(position).getIdKeluhan());
         textViewIsi.setText(listKeluhan.get(position).getIsi());
         textViewNama.setText(listKeluhan.get(position).getNamaLaundry());

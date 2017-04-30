@@ -5,13 +5,11 @@ import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -22,8 +20,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.rpl.kelompok1.gelo.R;
-import com.rpl.kelompok1.gelo.adapters.LaundryAdapter;
-import com.rpl.kelompok1.gelo.models.Laundry;
 import com.rpl.kelompok1.gelo.models.Order;
 import com.rpl.kelompok1.gelo.models.User;
 
@@ -41,7 +37,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             nomorUser, nomorLaundry, tipe, berat, harga, status, parfurm;
     Query query;
     Spinner tipeLaundry;
-    AppCompatButton order;
+    Button order;
 
     @Override
     protected void onStart() {
@@ -50,14 +46,11 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                //clearing the previous artist list
                 listUser.clear();
 
-                //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
+
                     User user = postSnapshot.getValue(User.class);
-                    //adding artist to the list
                     listUser.add(user);
 
                     namaUser = user.getName();
@@ -78,18 +71,17 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_order);
 
         tipeLaundry = (Spinner) findViewById(R.id.spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.tipe_laundry, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
         tipeLaundry.setAdapter(adapter);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference("order");
         user = firebaseAuth.getCurrentUser();
 
-        order = (AppCompatButton) findViewById(R.id.appCompatButtonOrder);
+        mDatabase = FirebaseDatabase.getInstance().getReference("order");
+        query =  FirebaseDatabase.getInstance().getReference("user").orderByChild("id").equalTo(user.getUid());
+
+        order = (Button) findViewById(R.id.ButtonOrder);
         order.setOnClickListener(this);
 
         alamat = (TextInputEditText) findViewById(R.id.textInputEditTextUser);
@@ -105,8 +97,6 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         laundry.setOnClickListener(this);
 
         listUser = new ArrayList<>();
-
-        query =  FirebaseDatabase.getInstance().getReference("user").orderByChild("id").equalTo(user.getUid());
     }
 
     @Override
@@ -132,8 +122,8 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
         idOrder = mDatabase.push().getKey();
         idUser = user.getUid();
         tipe = tipeLaundry.getSelectedItem().toString();
-        berat = "0";
-        harga = "0";
+        berat = "";
+        harga = "";
         status = "dipesan";
         parfurm = parfurmET.getText().toString().trim();
         Order order = new Order(idOrder, idLaundry, idUser, namaUser, namaLaundry, alamatLaundry, alamatUser,
@@ -150,7 +140,7 @@ public class OrderActivity extends AppCompatActivity implements View.OnClickList
             case R.id.textInputEditTextLaundry:
                 startActivityForResult(new Intent(OrderActivity.this, LaundryListActivity.class), 2);
                 break;
-            case R.id.appCompatButtonOrder:
+            case R.id.ButtonOrder:
                 writeNewOrder();
                 finish();
                 break;

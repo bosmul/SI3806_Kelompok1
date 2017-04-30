@@ -17,59 +17,81 @@
         android:text="Lihat KELUHAN"
         android:textSize="30sp"
         android:textColor="@color/wallet_holo_blue_light"/>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:text="User"
-            android:id="@+id/textViewUser"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/wallet_holo_blue_light"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:text="Pilih Laundry"
-            android:id="@+id/textViewLaundry"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/wallet_holo_blue_light"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Laundry:"
+                android:id="@+id/textViewlaundry"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:text="Keluhan"
-            android:id="@+id/textViewIsiKeluhan"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/wallet_holo_blue_light"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Pilih Laundry"
+                android:id="@+id/textViewLaundry"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp"
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:text="feedback"
-            android:id="@+id/textViewFeedback"
-            android:textSize="20sp"
-            android:textColor="@color/white"
-            android:background="@color/wallet_holo_blue_light"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Keluhan:"
+                android:id="@+id/textViewKeluhan"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"/>
 
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Isi keluhan"
+                android:id="@+id/textViewIsiKeluhan"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_marginBottom="10dp"
+                android:background="@color/wallet_holo_blue_light"/>
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="10dp"
+                android:text="Feedback: "
+                android:id="@+id/textViewFeedback"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Belum ada feedback"
+                android:id="@+id/textViewIsiFeedback"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:background="@color/wallet_holo_blue_light"/>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

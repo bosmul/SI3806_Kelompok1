@@ -21,7 +21,6 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
     private Button btnSignOut;
 
     private TextView update;
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +34,6 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
         btnLihatKeluhan = (Button) findViewById(R.id.btnLihatkeluhan);
         btnSignOut = (Button) findViewById(R.id.btnSignOut);
         update = (TextView) findViewById(R.id.textViewUpdate);
-
     }
 
     public void onClick(View view) {
@@ -60,4 +58,5 @@ public class MenuCustomerActivity extends AppCompatActivity implements View.OnCl
         if (view == btnSignOut) {
             startActivity(new Intent(MenuCustomerActivity.this, LoginActivity.class));
         }
-    }}
+    }
+}

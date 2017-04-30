@@ -7,6 +7,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,14 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class KeluhanListActivity extends AppCompatActivity {
-    private AppCompatTextView textViewName;
+    private TextView textViewName;
     private ListView listViewKeluhan;
     private List<Keluhan> listKeluhan;
     private KeluhanAdapter mKeluhanAdapter;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
-    Query query;
-    FirebaseUser user;
+    private Query query;
+    private FirebaseUser user;
 
     @Override
     protected void onStart() {
@@ -39,19 +40,16 @@ public class KeluhanListActivity extends AppCompatActivity {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //clearing the previous artist list
                 listKeluhan.clear();
 
-                //iterating through all the nodes
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    //getting artist
                     Keluhan keluhan = postSnapshot.getValue(Keluhan.class);
-                    //adding artist to the list
                     listKeluhan.add(keluhan);
+                    textViewName.setText(keluhan.getNamaUser());
+
                 }
-                //creating adapter
+
                 mKeluhanAdapter = new KeluhanAdapter(KeluhanListActivity.this, listKeluhan);
-                //attaching adapter to the listview
                 listViewKeluhan.setAdapter(mKeluhanAdapter);
             }
 
@@ -67,26 +65,21 @@ public class KeluhanListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_keluhan_list);
 
-        textViewName = (AppCompatTextView) findViewById(R.id.textViewName);
+        textViewName = (TextView) findViewById(R.id.textViewName);
         listViewKeluhan = (ListView) findViewById(R.id.listViewKeluhan);
         listKeluhan = new ArrayList<>();
 
-        String emailFromIntent = getIntent().getStringExtra("EMAIL");
-        textViewName.setText(emailFromIntent);
-
         firebaseAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference("keluhan");
         user = firebaseAuth.getCurrentUser();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("keluhan");
         query =  mDatabase.orderByChild("idUser").equalTo(user.getUid());
 
         listViewKeluhan.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //getting the selected artist
                 Keluhan keluhan = listKeluhan.get(i);
 
-
-                //creating an intent
                 Intent intent = new Intent(getApplicationContext(), LihatKeluhanActivity.class);
                 String namaUser = keluhan.getNamaUser();
                 String nomorUser = keluhan.getNomorUser();
@@ -97,7 +90,6 @@ public class KeluhanListActivity extends AppCompatActivity {
                 String idLaundry = keluhan.getIdLaundry();
                 String idKeluhan = keluhan.getIdKeluhan();
                 String feedback = keluhan.getFeedback();
-
 
                 intent.putExtra("namaUser", namaUser);
                 intent.putExtra("nomorUser", nomorUser);
@@ -110,13 +102,7 @@ public class KeluhanListActivity extends AppCompatActivity {
                 intent.putExtra("feedback", feedback);
 
                 startActivity(intent);
-                //putting artist name and id to intent
-
-                //starting the activity with intent
-                startActivity(intent);
             }
         });
     }
-
-
 }

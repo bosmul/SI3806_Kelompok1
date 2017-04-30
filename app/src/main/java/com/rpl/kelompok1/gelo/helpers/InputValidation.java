@@ -9,7 +9,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 /**
- * Created by lalit on 9/13/2016.
+ * Created by lenovo on 4/13/2017.
  */
 public class InputValidation {
     private Context context;
@@ -44,7 +44,7 @@ public class InputValidation {
 
     public boolean isInputEditTextTelepon(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
         String value = textInputEditText.getText().toString().trim();
-        if (value.length() < 12 || value.length() > 14) {
+        if (value.length() < 10 || value.length() > 13) {
             textInputLayout.setError(message);
             hideKeyboardFrom(textInputEditText);
             return false;
