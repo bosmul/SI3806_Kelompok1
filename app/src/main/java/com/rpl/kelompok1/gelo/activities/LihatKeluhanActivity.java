@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LihatKeluhanActivity extends AppCompatActivity{
-    TextView userTV, laundry, isiKeluhan, feedbackTV;
+    TextView laundry, isiKeluhan, feedbackTV;
     private List<Keluhan> listKeluhan;
     private List<User> listUser;
 
@@ -58,7 +58,6 @@ public class LihatKeluhanActivity extends AppCompatActivity{
         isi = getIntent().getStringExtra("isi");
         feedback = getIntent().getStringExtra("feedback");
 
-        userTV.setText(namaUser);
         laundry.setText(namaLaundry);
         isiKeluhan.setText(isi);
         feedbackTV.setText(feedback);

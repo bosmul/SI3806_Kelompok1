@@ -80,11 +80,11 @@ public class UserListActivity extends AppCompatActivity {
 
         listUser = new ArrayList<>();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("user");
-        query = mDatabase.orderByChild("id").equalTo(user.getUid());
-
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("user");
+        query = mDatabase.orderByChild("id").equalTo(user.getUid());
 
         listViewUser.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
