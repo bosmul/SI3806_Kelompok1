@@ -148,8 +148,6 @@ public class OrderListActivity extends AppCompatActivity {
         builder.setSmallIcon(android.R.drawable.ic_dialog_alert)
                 .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher));
 
-
-
         listViewOrder = (ListView) findViewById(R.id.listViewOrder);
         listOrder = new ArrayList<>();
     }
